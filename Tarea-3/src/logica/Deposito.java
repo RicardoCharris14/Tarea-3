@@ -1,7 +1,9 @@
+package logica;
+
 import java.util.ArrayList;
 
 /**
- * Deposito que guarda varios productos de un solo tipo
+ * logica.Deposito que guarda varios productos de un solo tipo
  * @param <T> indica que clase de objeto contendra el deposito
  * @author Ricardo Charris
  * @author Vicente Ramirez
@@ -39,7 +41,7 @@ public class Deposito<T> {
      * @return String que da una descripcion de la clase
      */
     public String toString(){
-        return "\nDeposito que contiene objetos de tipo T";
+        return "\nlogica.Deposito que contiene objetos de tipo T";
     }
 
 

@@ -1,3 +1,4 @@
+import logica.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +20,7 @@ class ExpendedorTest {
         }catch(NoHayProductoException e){
             comprobacion = e.getMessage();
         }
-        assertEquals("Me comi un Snickers",producto.consumir());
+        assertEquals("Me comi un logica.Snickers",producto.consumir());
     }
 
     @Test

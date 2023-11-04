@@ -1,3 +1,9 @@
+package logica;
+
+import logica.Comprador;
+import logica.Deposito;
+import logica.Expendedor;
+
 public class Main {
     public static void main(String[] args) {
         Deposito<Moneda> deposito1 = new Deposito<>();
@@ -23,7 +29,7 @@ public class Main {
         System.out.println(comprador.queConsumiste() + ", mi vuelto fue de $" + comprador.getVuelto());
 
 
-        System.out.println("\nCompra de una Sprite con $1000: ");
+        System.out.println("\nCompra de una logica.Sprite con $1000: ");
         m= new Moneda1000();
         try {
             comprador = new Comprador(m, SeleccionProductos.Sprite, expe);
@@ -37,7 +43,7 @@ public class Main {
         System.out.println(comprador.queConsumiste() + ", mi vuelto fue de $" + comprador.getVuelto());
 
 
-        System.out.println("\nCompra de una Fanta con $500: ");
+        System.out.println("\nCompra de una logica.Fanta con $500: ");
         m = new Moneda500();
         try {
             comprador = new Comprador(m, SeleccionProductos.Fanta, expe);
@@ -51,7 +57,7 @@ public class Main {
         System.out.println(comprador.queConsumiste() + ", mi vuelto fue de $" + comprador.getVuelto());
 
 
-        System.out.println("\nCompra de un Snickers con $100: ");
+        System.out.println("\nCompra de un logica.Snickers con $100: ");
         m= new Moneda100();
         try {
             comprador = new Comprador(m, SeleccionProductos.Snickers, expe);
@@ -65,7 +71,7 @@ public class Main {
         System.out.println(comprador.queConsumiste() + ", mi vuelto fue de $" + comprador.getVuelto());
 
 
-        System.out.println("\nCompra de un Super8 con $500: ");
+        System.out.println("\nCompra de un logica.Super8 con $500: ");
         m= new Moneda500();
         try {
             comprador = new Comprador(m, SeleccionProductos.Super8, expe);
@@ -80,7 +86,7 @@ public class Main {
 
 
         //Compra tal que el producto esta agotado
-        System.out.println("\nCompra de una Cocacola con $500: \n");
+        System.out.println("\nCompra de una logica.Cocacola con $500: \n");
         Expendedor exp1 = new Expendedor(0);
         m = new Moneda500();
         try {
@@ -112,7 +118,7 @@ public class Main {
         exp1.getMoneda();
 
         //Intento de compra sin moneda
-        System.out.println("\nRobo de una Sprite: ");
+        System.out.println("\nRobo de una logica.Sprite: ");
         m = null;
         try {
             comprador = new Comprador(m, SeleccionProductos.Sprite, expe);
@@ -125,7 +131,7 @@ public class Main {
         }
 
         //Compra con moneda no valida
-        System.out.println("\nCompra de un Snickers con moneda Boliviana: ");
+        System.out.println("\nCompra de un logica.Snickers con moneda Boliviana: ");
         m = new Moneda1500();
         try {
             comprador = new Comprador(m, SeleccionProductos.Snickers, expe);
@@ -140,7 +146,7 @@ public class Main {
         exp1.getMoneda();
 
         //Compra con menos dinero del valor del producto
-        System.out.println("\nPersona en situacion de calle intenta comprar un Super8: ");
+        System.out.println("\nPersona en situacion de calle intenta comprar un logica.Super8: ");
         m = new Moneda100();
         try {
             comprador = new Comprador(m, SeleccionProductos.Super8, expe);
@@ -156,7 +162,7 @@ public class Main {
 
         //Impresion del numero de serie de una moneda
         Moneda moneda100 = new Moneda100();
-        System.out.println("\nMoneda de 100 pesos con numero de serie: "+moneda100.getSerie());
+        System.out.println("\nlogica.Moneda de 100 pesos con numero de serie: "+moneda100.getSerie());
 
     }
 }

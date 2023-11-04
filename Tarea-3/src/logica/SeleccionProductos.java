@@ -1,3 +1,5 @@
+package logica;
+
 /**
  * Enumeracion que contiene los productos y sus precios.
  * @author Ricardo Charris

@@ -1,3 +1,5 @@
+package logica;
+
 /**
  * Clase que representa un producto
  * @author Ricardo Charris
@@ -21,7 +23,7 @@ public abstract class Producto {
 
     /**
      *Describe la clase
-     * @return String con la descripcion de la clase Producto
+     * @return String con la descripcion de la clase logica.Producto
      */
     @Override
     public String toString(){

@@ -1,3 +1,7 @@
+package logica;
+
+import logica.Moneda;
+
 /**
  * Esta clase es un objeto de moneda de 500 que extiende de la clase moneda
  * @author Vicente Ramírez
@@ -20,11 +24,11 @@ public class Moneda500 extends Moneda {
     }
 
     /**
-     * metodo toString de Moneda500
-     * @return deuvelve Moneda500 en forma de string
+     * metodo toString de logica.Moneda500
+     * @return deuvelve logica.Moneda500 en forma de string
      */
     @Override
     public String toString() {
-        return "Moneda con valor de $500";
+        return "logica.Moneda con valor de $500";
     }
 }

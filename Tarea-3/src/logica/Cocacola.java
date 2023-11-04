@@ -1,9 +1,13 @@
+package logica;
+
+import logica.Bebida;
+
 /**
- * Bebida gaseosa llamada CocaCola
+ * logica.Bebida gaseosa llamada CocaCola
  * @author Ricardo Charris
  * @author Vicente Ramirez
  */
-public class Cocacola extends Bebida{
+public class Cocacola extends Bebida {
     public Cocacola(int serie){
         super(serie);
     }
@@ -22,7 +26,7 @@ public class Cocacola extends Bebida{
      */
     @Override
     public String toString(){
-        return "\nBebida: CocaCola | Nro. Serie: "+getSerie();
+        return "\nlogica.Bebida: CocaCola | Nro. Serie: "+getSerie();
     }
 
 

@@ -1,3 +1,7 @@
+import logica.Moneda;
+import logica.Moneda1000;
+import logica.Moneda1500;
+import logica.Moneda500;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,9 +1,13 @@
+package logica;
+
+import logica.Bebida;
+
 /**
- * Bebida gaseosa llamada Fanta
+ * logica.Bebida gaseosa llamada logica.Fanta
  * @author Ricardo Charris
  * @author Vicente Ramirez
  */
-public class Fanta extends Bebida{
+public class Fanta extends Bebida {
     public Fanta(int serie){
         super(serie);
     }
@@ -18,10 +22,10 @@ public class Fanta extends Bebida{
 
     /**
      * Describe la clase
-     * @return String con la descripcion de la clase Fanta
+     * @return String con la descripcion de la clase logica.Fanta
      */
     @Override
     public String toString(){
-        return "\nBebida: Fanta | Nro. Serie: "+getSerie();
+        return "\nlogica.Bebida: logica.Fanta | Nro. Serie: "+getSerie();
     }
 }

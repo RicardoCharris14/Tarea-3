@@ -1,7 +1,11 @@
+package logica;
+
+import logica.Bebida;
+
 /**
- * Bebida gaseosa llamada Sprite
+ * logica.Bebida gaseosa llamada logica.Sprite
  */
-public class Sprite extends Bebida{
+public class Sprite extends Bebida {
     public Sprite(int serie){
         super(serie);
     }
@@ -16,10 +20,10 @@ public class Sprite extends Bebida{
 
     /**
      * Describe la clase
-     * @return String con la descripcion de la clase Sprite
+     * @return String con la descripcion de la clase logica.Sprite
      */
     @Override
     public String toString(){
-        return "\nBebida: Sprite | Nro. Serie: "+getSerie();
+        return "\nlogica.Bebida: logica.Sprite | Nro. Serie: "+getSerie();
     }
 }

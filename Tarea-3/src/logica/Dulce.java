@@ -1,3 +1,5 @@
+package logica;
+
 /**
  * Clase abstracta.
  * Familia de los alimentos de sabor dulce
@@ -11,10 +13,10 @@ public abstract class Dulce extends Producto {
 
     /**
      * Describe la clase
-     * @return String que da una descripcion de la clase Dulce
+     * @return String que da una descripcion de la clase logica.Dulce
      */
     @Override
     public String toString(){
-        return "\nDulce con Nro. Serie: "+getSerie();
+        return "\nlogica.Dulce con Nro. Serie: "+getSerie();
     }
 }

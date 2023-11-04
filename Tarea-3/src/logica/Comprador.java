@@ -1,3 +1,8 @@
+package logica;
+
+import logica.Expendedor;
+import logica.Producto;
+
 /**
  * clase que representa a un comprador
  * @author Ricardo Charris
@@ -14,7 +19,7 @@ public class Comprador {
     private int vuelto;
 
     /**
-     * constructor de Comprador que crea una instancia de Producto, a la que le asigna el precio y su eleccion de acuerdo al enum de SeleccionProductos,
+     * constructor de logica.Comprador que crea una instancia de logica.Producto, a la que le asigna el precio y su eleccion de acuerdo al enum de logica.SeleccionProductos,
      * si producto comprado existe, el producto es consumido, tambien calcula el vuelto del producto.
      * @param m recibe una moneda
      * @param eleccion hace referencia a los productos del enum
@@ -23,10 +28,11 @@ public class Comprador {
      * @throws PagoIncorrectoException cuando se ingresa una moneda null lanza esta exception
      * @throws NoHayProductoException  cuando selecciona un producto inexistente lanza esta exception
      */
-    public Comprador(Moneda m, SeleccionProductos eleccion, Expendedor exp) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException{
+    public Comprador(Moneda m, SeleccionProductos eleccion, Expendedor exp) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException {
         vuelto = 0;
         productoConsumido = null;
-        Producto productoComprado = exp.comprarProducto(m, eleccion);
+        exp.comprarProducto(m, eleccion);
+        Producto productoComprado = exp.getProducto();
         if(productoComprado != null) {
             productoConsumido = productoComprado.consumir();
         }

@@ -1,3 +1,5 @@
+package logica;
+
 /**
  * Esta clase es abstracta, hereda las monedas e implementa la interfaz Comparable *
  * @author Vicente Ramírez
@@ -5,20 +7,23 @@
  */
 
 public abstract class Moneda  implements Comparable <Moneda>{
+    /**cuenta cuantas instancias hay de la clase*/
+    private static int contador = 0;
+    private int serie;
     /**
-     * Metodo constructor de Moneda
+     * Metodo constructor de logica.Moneda
      */
     public Moneda(){
+        contador += 1;
+        serie = contador;
     }
-//REVISAR EL HASCODE DEL METODO
+
     /**
-     *  obtiene el hashcode de moneda, lo transforma a hexadecimal y lo representa como un String
+     *  devuelve el numero de serie de la moneda
      *  @return devuelve el hashcode de la moneda
      */
-    public String getSerie(){
-        int hashCode = System.identityHashCode(this);
-        String hexHashCode = Integer.toHexString(hashCode);
-        return "0x"+hexHashCode;
+    public int getSerie(){
+        return serie;
     }
 
 
