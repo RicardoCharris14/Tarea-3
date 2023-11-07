@@ -1,9 +1,12 @@
 package grafica;
 import javax.swing.*;
+import java.awt.*;
 
 public class Ventana extends JFrame{
     PanelPrincipal panel;
     public Ventana(){
+        this.setTitle("Maquina expendedora");
+
         panel = new PanelPrincipal();
         this.add(panel);
 

@@ -7,8 +7,11 @@ public class PanelPrincipal extends JPanel{
     private PanelExpendedor exp;
     public PanelPrincipal(){
         exp = new PanelExpendedor();
+        exp.setBounds(30,30,400,600);
+
         com = new PanelComprador();
-        this.setLayout(new GridLayout(1,2));
+
+        this.setLayout(null);
         this.setBackground(Color.WHITE);
         this.add(exp);
         this.add(com);
@@ -16,6 +19,7 @@ public class PanelPrincipal extends JPanel{
     @Override
     public void paint(Graphics g){
         super.paint(g);
+
 
 
     }
