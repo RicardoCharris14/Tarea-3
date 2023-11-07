@@ -19,6 +19,7 @@ public class PanelExpendedor extends JPanel {
     private JButton btnFanta;
     private JButton btnSnickers;
     private JButton btnSuper8;
+    private JTextArea txtEntradaM;
     public PanelExpendedor(){
         depSprite = new PanelDepositoSprite();
         this.add(depSprite);
@@ -50,6 +51,9 @@ public class PanelExpendedor extends JPanel {
         btnSuper8 = new JButton();
         this.add(btnSuper8);
 
+        this.txtEntradaM = new JTextArea(" Ingrese moneda\n(100, 500,o 1000)");
+        this.add(txtEntradaM);
+
         this.setLayout(null);
         setBackground(Color.cyan);
     }
@@ -66,23 +70,41 @@ public class PanelExpendedor extends JPanel {
         g.setColor(Color.GRAY);
         g.fillRect(0, 0,500,750);
         g.setColor(Color.BLACK);
+        //lineas divisorias de las estanterias
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(Color.BLACK);
+        g2.setStroke(new BasicStroke(2.0f));
+        g2.fillRect(11,11,308,566);
+        g2.setColor(Color.GRAY);
+        g2.drawLine(15,126,315,126 );
+        g2.drawLine(15,238,315,238 );
+        g2.drawLine(15,350,315,350 );
+        g2.drawLine(15,462,315,462 );
         //estante de productos
         depSprite.setBounds(15,15, anchoDepositos, altoDepositos);
         depCoca.setBounds(15,127, anchoDepositos, altoDepositos);
         depFanta.setBounds(15,239, anchoDepositos, altoDepositos);
         depSnickers.setBounds(15,351, anchoDepositos, altoDepositos);
         depSuper8.setBounds(15,463, anchoDepositos, altoDepositos);
-        //lineas divisorias de las estanterias
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.BLACK);
-        g2.setStroke(new BasicStroke(2.0f));
-        g2.drawRect(11,11,308,566);
         //bandeja de salida
         g.setColor(Color.BLACK);
         g.drawRect(  70 ,   600, 190,50);
         depCompra.setBounds(71,601,188,48);
         //manija de la bandeja de salida
         g.fillRect(  132,  610, 66, 7);
+        //entrada de moneda
+        g2.drawRect(357,335,106,41);
+        txtEntradaM.setBounds(360,338,100,35);
+        txtEntradaM.setEditable(false);
+        txtEntradaM.setOpaque(true);
+        txtEntradaM.setBackground(Color.BLUE);
+        txtEntradaM.setForeground(Color.WHITE);
+        g.fillRect(390,388,40,100);
+        g.setColor(Color.GRAY);
+        g.fillRect(395,393,30,90);
+        g.setColor(Color.WHITE);
+        g.fillRect(405,400,10,76);
+
         //boton sprite
         btnSprite.setBounds(  327,50,ladoBtn,ladoBtn);
         btnSprite.setFocusPainted(false);
