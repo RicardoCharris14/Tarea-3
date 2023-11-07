@@ -8,6 +8,11 @@ public class PanelExpendedor extends JPanel {
     private PanelDepositoFanta depFanta;
     private PanelDepositoSnickers depSnickers;
     private PanelDepositoSuper8 depSuper8;
+    private ImageIcon imSprite;
+    private ImageIcon imCoca;
+    private ImageIcon imFanta;
+    private ImageIcon imSnickers;
+    private ImageIcon imSuper8;
     private JButton btnSprite;
     private JButton btnCoca;
     private JButton btnFanta;
@@ -25,16 +30,21 @@ public class PanelExpendedor extends JPanel {
         depSuper8 = new PanelDepositoSuper8();
         this.add(depSuper8);
 
+        imSprite = new ImageIcon("src/grafica/imagenes/sprite.png");
+        imCoca = new ImageIcon("src/grafica/imagenes/coca.png");
+        imFanta = new ImageIcon("src/grafica/imagenes/fanta.png");
+        imSnickers = new ImageIcon("src/grafica/imagenes/snickers.png");
+        imSuper8 = new ImageIcon("src/grafica/imagenes/super8.png");
 
-        btnSprite = new JButton("1");
+        btnSprite = new JButton();
         this.add(btnSprite);
-        btnCoca = new JButton("2");
+        btnCoca = new JButton();
         this.add(btnCoca);
-        btnFanta = new JButton("3");
+        btnFanta = new JButton();
         this.add(btnFanta);
-        btnSnickers = new JButton("4");
+        btnSnickers = new JButton();
         this.add(btnSnickers);
-        btnSuper8 = new JButton("5");
+        btnSuper8 = new JButton();
         this.add(btnSuper8);
 
         this.setLayout(null);
@@ -44,41 +54,55 @@ public class PanelExpendedor extends JPanel {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        //medidas
+        int ladoBtn = 76;
+        int anchoDepositos = 300;
+        int altoDepositos = 110;
         //expendedor
-        g.drawRect(0, 0,400,600);
+        g.drawRect(0, 0,500,750);
         g.setColor(Color.GRAY);
-        g.fillRect(0, 0,400,600);
+        g.fillRect(0, 0,500,750);
         g.setColor(Color.BLACK);
         //estante de productos
-        depSprite.setBounds(10,10,268,85);
-        depCoca.setBounds(10,97,268,85);
-        depFanta.setBounds(10,184,268,85);
-        depSnickers.setBounds(10,271,268,85);
-        depSuper8.setBounds(10,358,268,85);
+        depSprite.setBounds(15,15, anchoDepositos, altoDepositos);
+        depCoca.setBounds(15,127, anchoDepositos, altoDepositos);
+        depFanta.setBounds(15,239, anchoDepositos, altoDepositos);
+        depSnickers.setBounds(15,351, anchoDepositos, altoDepositos);
+        depSuper8.setBounds(15,463, anchoDepositos, altoDepositos);
         //lineas divisorias de las estanterias
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.BLACK);
         g2.setStroke(new BasicStroke(2.0f));
-        g2.drawRect(7,7,274,439);
+        g2.drawRect(11,11,308,566);
         //bandeja de salida
         g.setColor(Color.BLACK);
-        g.drawRect(  70 ,   480, 150,40);
+        g.drawRect(  70 ,   600, 190,50);
         //manija de la bandeja de salida
-        g.fillRect(  120,  490, 50, 5);
+        g.fillRect(  132,  610, 66, 7);
         //boton sprite
-        btnSprite.setBounds(  285,   50,50,50);
+        btnSprite.setBounds(  327,50,ladoBtn,ladoBtn);
         btnSprite.setFocusPainted(false);
+        Icon a = new ImageIcon(imSprite.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        btnSprite.setIcon(a);
         //boton Cocacola
-        btnCoca.setBounds(  345,   50,50,50);
+        btnCoca.setBounds(  417,   50,ladoBtn,ladoBtn);
         btnCoca.setFocusPainted(false);
+        Icon b = new ImageIcon(imCoca.getImage().getScaledInstance(ladoBtn,ladoBtn, Image.SCALE_DEFAULT));
+        btnCoca.setIcon(b);
         //boton fanta
-        btnFanta.setBounds(  285,  110,50,50);
+        btnFanta.setBounds(  327,  135,ladoBtn,ladoBtn);
         btnFanta.setFocusPainted(false);
+        Icon c = new ImageIcon(imFanta.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        btnFanta.setIcon(c);
         //boton Snickers
-        btnSnickers.setBounds(  345,   110,50,50);
+        btnSnickers.setBounds(  417,   135,ladoBtn,ladoBtn);
         btnSnickers.setFocusPainted(false);
+        Icon d = new ImageIcon(imSnickers.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        btnSnickers.setIcon(d);
         //boton Super8
-        btnSuper8.setBounds(  315,  170,50,50);
+        btnSuper8.setBounds(  372,  220,ladoBtn,ladoBtn);
         btnSuper8.setFocusPainted(false);
+        Icon e = new ImageIcon(imSuper8.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        btnSuper8.setIcon(e);
     }
 }
