@@ -8,6 +8,7 @@ public class PanelExpendedor extends JPanel {
     private PanelDepositoFanta depFanta;
     private PanelDepositoSnickers depSnickers;
     private PanelDepositoSuper8 depSuper8;
+    private PanelProductoComprado depCompra;
     private ImageIcon imSprite;
     private ImageIcon imCoca;
     private ImageIcon imFanta;
@@ -29,6 +30,8 @@ public class PanelExpendedor extends JPanel {
         this.add(depSnickers);
         depSuper8 = new PanelDepositoSuper8();
         this.add(depSuper8);
+        depCompra = new PanelProductoComprado();
+        this.add(depCompra);
 
         imSprite = new ImageIcon("src/grafica/imagenes/sprite.png");
         imCoca = new ImageIcon("src/grafica/imagenes/coca.png");
@@ -77,6 +80,7 @@ public class PanelExpendedor extends JPanel {
         //bandeja de salida
         g.setColor(Color.BLACK);
         g.drawRect(  70 ,   600, 190,50);
+        depCompra.setBounds(71,601,188,48);
         //manija de la bandeja de salida
         g.fillRect(  132,  610, 66, 7);
         //boton sprite
