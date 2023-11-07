@@ -11,8 +11,8 @@ public class Ventana extends JFrame{
         this.add(panel);
 
         this.setVisible(true);
-        this.setSize(1400, 800);
-        this.setLocationRelativeTo(null);
+        setSize(1600,900);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public static void main(String [] args){
