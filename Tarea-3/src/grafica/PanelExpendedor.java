@@ -157,7 +157,8 @@ public class PanelExpendedor extends JPanel {
             public void actionPerformed(ActionEvent e1) {
                 Moneda m = new Moneda1000();
                 try{
-                    exp.comprarProducto(m, SeleccionProductos.Sprite);
+                    exp.comprarProducto(m, SeleccionProductos.SPRITE);
+                    depCompra.setSeleccion(SeleccionProductos.SPRITE);
                     numSprites-=1;
                     depSprite.setNumProductos(numSprites);
 
@@ -176,7 +177,8 @@ public class PanelExpendedor extends JPanel {
             public void actionPerformed(ActionEvent e1){
                 Moneda m = new Moneda1000();
                 try{
-                    exp.comprarProducto(m, SeleccionProductos.Cocacola);
+                    exp.comprarProducto(m, SeleccionProductos.COCACOLA);
+                    depCompra.setSeleccion(SeleccionProductos.COCACOLA);
                     numCocas-=1;
                     depCoca.setNumProductos(numCocas);
 
@@ -195,7 +197,8 @@ public class PanelExpendedor extends JPanel {
             public void actionPerformed(ActionEvent e1){
                 Moneda m = new Moneda1000();
                 try{
-                    exp.comprarProducto(m, SeleccionProductos.Fanta);
+                    exp.comprarProducto(m, SeleccionProductos.FANTA);
+                    depCompra.setSeleccion(SeleccionProductos.FANTA);
                     numFantas-=1;
                     depFanta.setNumProductos(numFantas);
 
@@ -214,7 +217,8 @@ public class PanelExpendedor extends JPanel {
             public void actionPerformed(ActionEvent e1){
                 Moneda m = new Moneda1000();
                 try{
-                    exp.comprarProducto(m, SeleccionProductos.Snickers);
+                    exp.comprarProducto(m, SeleccionProductos.SNICKERS);
+                    depCompra.setSeleccion(SeleccionProductos.SNICKERS);
                     numSnickers-=1;
                     depSnickers.setNumProductos(numSnickers);
 
@@ -233,7 +237,8 @@ public class PanelExpendedor extends JPanel {
             public void actionPerformed(ActionEvent e1){
                 Moneda m = new Moneda1000();
                 try{
-                    exp.comprarProducto(m, SeleccionProductos.Super8);
+                    exp.comprarProducto(m, SeleccionProductos.SUPER8);
+                    depCompra.setSeleccion(SeleccionProductos.SUPER8);
                     numSuper8-=1;
                     depSuper8.setNumProductos(numSuper8);
 

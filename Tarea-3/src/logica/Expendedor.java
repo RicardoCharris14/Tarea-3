@@ -1,7 +1,5 @@
 package logica;
 
-import logica.*;
-
 /**
  * clase que simula un expendedor de productos para consumir
  * @author Vicente Ramírez
@@ -28,9 +26,7 @@ public class Expendedor {
      * variable que crea un deposito donde guarda el tipo logica.Super8
      */
     private Deposito<Super8> depositoSuper8;
-    /**
-     * variable que crea un deposito donde guarda las monedas
-     */
+    /**variable que crea un deposito donde guarda las monedas a devolver*/
     private Deposito<Moneda> monedasVuelto;
     /**Almacena las monedas con las que se compraron productos*/
     private Deposito<Moneda> monedasRecaudadas;
@@ -65,13 +61,10 @@ public class Expendedor {
             Super8 dulce2 = new Super8(500 + i);
             depositoSuper8.addElemento(dulce2);
         }
-        System.out.println("EXPENDEDOR CREADO\n\nPrecios de los productos:\n-CocaCola: $"+ SeleccionProductos.Cocacola.getPrecio()+
-                "\n-logica.Sprite: $"+ SeleccionProductos.Sprite.getPrecio()+"\n-logica.Fanta: $"+ SeleccionProductos.Fanta.getPrecio()+
-                "\n-logica.Snickers: $"+ SeleccionProductos.Snickers.getPrecio()+"\n-logica.Super8: $"+ SeleccionProductos.Super8.getPrecio()+
+        System.out.println("EXPENDEDOR CREADO\n\nPrecios de los productos:\n-CocaCola: $"+ SeleccionProductos.COCACOLA.getPrecio()+
+                "\n-logica.Sprite: $"+ SeleccionProductos.SPRITE.getPrecio()+"\n-logica.Fanta: $"+ SeleccionProductos.FANTA.getPrecio()+
+                "\n-logica.Snickers: $"+ SeleccionProductos.SNICKERS.getPrecio()+"\n-logica.Super8: $"+ SeleccionProductos.SUPER8.getPrecio()+
                 "\n\nHay "+numProducto+" unidades de cada producto.");
-    }
-    public Moneda getMoneda(){
-        return monedasVuelto.getElemento();
     }
 
     /**
@@ -100,19 +93,19 @@ public class Expendedor {
         else if(m.getValor()>=n_producto.getPrecio()){
             Producto producto1;
             switch(n_producto) {
-                case Cocacola:
+                case COCACOLA:
                     producto1 = depositoCoca.getElemento();
                     break;
-                case Sprite:
+                case SPRITE:
                     producto1 = depositSprite.getElemento();
                     break;
-                case Fanta:
+                case FANTA:
                     producto1 = depositoFanta.getElemento();
                     break;
-                case Snickers:
+                case SNICKERS:
                     producto1 = depositoSnickers.getElemento();
                     break;
-                case Super8:
+                case SUPER8:
                     producto1 = depositoSuper8.getElemento();
                     break;
                 default:
@@ -129,13 +122,13 @@ public class Expendedor {
                     monedasVuelto.addElemento(moneda);
                 }
             }
-             else{
+            else{
                 System.out.println(m.getValor());
-                 monedasVuelto.addElemento(m);
-                 throw new NoHayProductoException("\nNo hay disponibilidad del producto que se solicitó.\n");
+                monedasVuelto.addElemento(m);
+                throw new NoHayProductoException("\nNo hay disponibilidad del producto que se solicitó.\n");
 
             }
-             productoComprado = producto1;
+            productoComprado = producto1;
         }
         else{
             monedasVuelto.addElemento(m);
@@ -171,5 +164,3 @@ public class Expendedor {
                 "\ndepositoSuper8=" + depositoSuper8 + "\nmonedas=" + monedasVuelto;
     }
 }
-
-
