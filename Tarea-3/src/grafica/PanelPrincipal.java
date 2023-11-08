@@ -7,18 +7,16 @@ public class PanelPrincipal extends JPanel{
     private PanelExpendedor exp;
     public PanelPrincipal(){
         exp = new PanelExpendedor();
-        exp.setBounds(30,30,500,750);
-
         com = new PanelComprador();
-        com.setBounds(600,30,250,60);
 
+        exp.setBounds(30,30,500,750);
+        com.setBounds(600,30,700,700);
 
-
+        this.add(exp);
+        this.add(com);
 
         this.setLayout(null);
         this.setBackground(Color.WHITE);
-        this.add(exp);
-        this.add(com);
     }
     @Override
     public void paint(Graphics g){
