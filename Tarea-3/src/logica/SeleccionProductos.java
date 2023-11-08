@@ -7,7 +7,7 @@ package logica;
  */
 public enum SeleccionProductos {
     /**Constantes que hacen alucion a los diferentes productos*/
-    Sprite(1000),Cocacola(400),Fanta(300),Snickers(100),Super8(200),Pinguino(500);
+    SPRITE(1000),COCACOLA(400),FANTA(300),SNICKERS(100),SUPER8(200),PINGUINO(500), NULO (0);
     /**Guarda el precio de cada constante*/
     private final int precio;
     SeleccionProductos(int precio){
