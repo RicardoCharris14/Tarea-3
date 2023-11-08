@@ -12,7 +12,7 @@ class ExpendedorTest {
         Moneda m1 = new Moneda500();
         Expendedor exp1 = new Expendedor(3);
         try{
-            producto = exp1.comprarProducto(m1,SeleccionProductos.Snickers);
+            producto = exp1.comprarProducto(m1,SeleccionProductos.SNICKERS);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -30,7 +30,7 @@ class ExpendedorTest {
         Moneda m1 = null;
         Expendedor exp1 = new Expendedor(3);
         try{
-            producto = exp1.comprarProducto(m1,SeleccionProductos.Super8);
+            producto = exp1.comprarProducto(m1,SeleccionProductos.SUPER8);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -47,7 +47,7 @@ class ExpendedorTest {
         Moneda m1 = new Moneda100();
         Expendedor exp1 = new Expendedor(3);
         try{
-            producto = exp1.comprarProducto(m1,SeleccionProductos.Fanta);
+            producto = exp1.comprarProducto(m1,SeleccionProductos.FANTA);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -65,7 +65,7 @@ class ExpendedorTest {
         Moneda m1 = new Moneda1000();
         Expendedor exp1 = new Expendedor(3);
         try{
-            producto = exp1.comprarProducto(m1,SeleccionProductos.Pinguino);
+            producto = exp1.comprarProducto(m1,SeleccionProductos.PINGUINO);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -83,7 +83,7 @@ class ExpendedorTest {
         Moneda m1 = new Moneda1000();
         Expendedor exp1 = new Expendedor(0);
         try{
-            producto = exp1.comprarProducto(m1,SeleccionProductos.Sprite);
+            producto = exp1.comprarProducto(m1,SeleccionProductos.SPRITE);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -101,7 +101,7 @@ class ExpendedorTest {
         Moneda m1 = new Moneda1500();
         Expendedor exp1 = new Expendedor(0);
         try{
-            producto = exp1.comprarProducto(m1,SeleccionProductos.Sprite);
+            producto = exp1.comprarProducto(m1,SeleccionProductos.SPRITE);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){

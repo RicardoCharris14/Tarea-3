@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 public class PanelExpendedor extends JPanel {
     private Expendedor exp;
@@ -71,6 +72,7 @@ public class PanelExpendedor extends JPanel {
         this.add(txtEntradaM);
 
         eventosBotones();
+        clickDepCompra();
 
         this.setLayout(null);
         setBackground(Color.cyan);
@@ -252,5 +254,9 @@ public class PanelExpendedor extends JPanel {
                 repaint();
             }
         });
+    }
+    public void clickDepCompra(){
+        depCompra.setSeleccion(SeleccionProductos.NULO);
+        repaint();
     }
 }

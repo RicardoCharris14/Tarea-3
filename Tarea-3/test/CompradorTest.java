@@ -12,7 +12,7 @@ class CompradorTest {
         Expendedor exp1 = new Expendedor(3);
         Comprador comprador = null;
         try{
-            comprador = new Comprador(m1, SeleccionProductos.Cocacola, exp1);
+            comprador = new Comprador(m1, SeleccionProductos.COCACOLA, exp1);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -31,7 +31,7 @@ class CompradorTest {
         Expendedor exp1 = new Expendedor(3);
         Comprador comprador = null;
         try{
-            comprador = new Comprador(m1, SeleccionProductos.Snickers, exp1);
+            comprador = new Comprador(m1, SeleccionProductos.SNICKERS, exp1);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -48,7 +48,7 @@ class CompradorTest {
         Expendedor exp1 = new Expendedor(3);
         Comprador comprador = null;
         try{
-            comprador = new Comprador(m1, SeleccionProductos.Sprite, exp1);
+            comprador = new Comprador(m1, SeleccionProductos.SPRITE, exp1);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -66,7 +66,7 @@ class CompradorTest {
         Expendedor exp1 = new Expendedor(4);
         Comprador comprador = null;
         try{
-            comprador = new Comprador(m1, SeleccionProductos.Pinguino, exp1);
+            comprador = new Comprador(m1, SeleccionProductos.PINGUINO, exp1);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -84,7 +84,7 @@ class CompradorTest {
         Expendedor exp1 = new Expendedor(0);
         Comprador comprador = null;
         try{
-            comprador = new Comprador(m1, SeleccionProductos.Snickers, exp1);
+            comprador = new Comprador(m1, SeleccionProductos.SNICKERS, exp1);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
@@ -102,7 +102,7 @@ class CompradorTest {
         Expendedor exp1 = new Expendedor(0);
         Comprador comprador = null;
         try{
-            comprador = new Comprador(m1, SeleccionProductos.Super8, exp1);
+            comprador = new Comprador(m1, SeleccionProductos.SUPER8, exp1);
         }catch(PagoInsuficienteException e){
             comprobacion = e.getMessage();
         }catch(PagoIncorrectoException e){
