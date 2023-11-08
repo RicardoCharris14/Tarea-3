@@ -5,13 +5,19 @@ import java.awt.*;
 
 public class PanelDepositoSnickers extends JPanel {
     private Image imSnickers;
-    private int cantidadProducto;
-    public PanelDepositoSnickers(){
-        cantidadProducto = 5;
+    private int numProductos;
+    public PanelDepositoSnickers(int numProductos){
+        this.numProductos = numProductos;
+
         imSnickers = new ImageIcon("src/grafica/imagenes/snickersparado.png").getImage();
 
         this.setBackground(Color.BLACK);
     }
+
+    public void setNumProductos(int numProductos){
+        this.numProductos = numProductos;
+    }
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -27,7 +33,7 @@ public class PanelDepositoSnickers extends JPanel {
         g.drawLine(anchoPanel,altoPanel,anchoPanel*98/100,altoPanel*92/100);
         //productos en el deposito
         int tamanoIm = anchoPanel/5;
-        for(int i = 0 ; i < cantidadProducto ; i++){
+        for(int i = 0; i < numProductos; i++){
             g.drawImage(imSnickers,tamanoIm*i,altoPanel/4,tamanoIm,tamanoIm,this);
         }
 
