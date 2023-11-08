@@ -1,8 +1,13 @@
 package grafica;
+import logica.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PanelExpendedor extends JPanel {
+    private Expendedor exp;
     private PanelDepositoSprite depSprite;
     private PanelDepositoCoca depCoca;
     private PanelDepositoFanta depFanta;
@@ -20,19 +25,22 @@ public class PanelExpendedor extends JPanel {
     private JButton btnSnickers;
     private JButton btnSuper8;
     private JTextArea txtEntradaM;
-    public PanelExpendedor(){
-        depSprite = new PanelDepositoSprite();
-        this.add(depSprite);
-        depCoca = new PanelDepositoCoca();
-        this.add(depCoca);
-        depFanta = new PanelDepositoFanta();
-        this.add(depFanta);
-        depSnickers = new PanelDepositoSnickers();
-        this.add(depSnickers);
-        depSuper8 = new PanelDepositoSuper8();
-        this.add(depSuper8);
+    private final int numProductos = 5;
+    private int numSprites = numProductos;
+    private int numCocas = numProductos;
+    private int numFantas = numProductos;
+    private int numSnickers = numProductos;
+    private int numSuper8 = numProductos;
+
+    public PanelExpendedor() {
+        exp = new Expendedor(numProductos);
+
+        depSprite = new PanelDepositoSprite(numProductos);
+        depCoca = new PanelDepositoCoca(numProductos);
+        depFanta = new PanelDepositoFanta(numProductos);
+        depSnickers = new PanelDepositoSnickers(numProductos);
+        depSuper8 = new PanelDepositoSuper8(numProductos);
         depCompra = new PanelProductoComprado();
-        this.add(depCompra);
 
         imSprite = new ImageIcon("src/grafica/imagenes/sprite.png");
         imCoca = new ImageIcon("src/grafica/imagenes/coca.png");
@@ -41,94 +49,203 @@ public class PanelExpendedor extends JPanel {
         imSuper8 = new ImageIcon("src/grafica/imagenes/super8.png");
 
         btnSprite = new JButton();
-        this.add(btnSprite);
         btnCoca = new JButton();
-        this.add(btnCoca);
         btnFanta = new JButton();
-        this.add(btnFanta);
         btnSnickers = new JButton();
-        this.add(btnSnickers);
         btnSuper8 = new JButton();
-        this.add(btnSuper8);
 
-        this.txtEntradaM = new JTextArea(" Ingrese moneda\n(100, 500,o 1000)");
+        txtEntradaM = new JTextArea(" Ingrese moneda\n(100, 500,o 1000)");
+
+
+        this.add(depSprite);
+        this.add(depCoca);
+        this.add(depFanta);
+        this.add(depSnickers);
+        this.add(depSuper8);
+        this.add(depCompra);
+        this.add(btnSprite);
+        this.add(btnCoca);
+        this.add(btnFanta);
+        this.add(btnSnickers);
+        this.add(btnSuper8);
         this.add(txtEntradaM);
+
+        eventosBotones();
 
         this.setLayout(null);
         setBackground(Color.cyan);
     }
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         //medidas
         int ladoBtn = 76;
         int anchoDepositos = 300;
         int altoDepositos = 110;
         //expendedor
-        g.drawRect(0, 0,500,750);
+        g.drawRect(0, 0, 500, 750);
         g.setColor(Color.GRAY);
-        g.fillRect(0, 0,500,750);
+        g.fillRect(0, 0, 500, 750);
         g.setColor(Color.BLACK);
         //lineas divisorias de las estanterias
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.BLACK);
         g2.setStroke(new BasicStroke(2.0f));
-        g2.fillRect(11,11,308,566);
+        g2.fillRect(11, 11, 308, 566);
         g2.setColor(Color.GRAY);
-        g2.drawLine(15,126,315,126 );
-        g2.drawLine(15,238,315,238 );
-        g2.drawLine(15,350,315,350 );
-        g2.drawLine(15,462,315,462 );
+        g2.drawLine(15, 126, 315, 126);
+        g2.drawLine(15, 238, 315, 238);
+        g2.drawLine(15, 350, 315, 350);
+        g2.drawLine(15, 462, 315, 462);
         //estante de productos
-        depSprite.setBounds(15,15, anchoDepositos, altoDepositos);
-        depCoca.setBounds(15,127, anchoDepositos, altoDepositos);
-        depFanta.setBounds(15,239, anchoDepositos, altoDepositos);
-        depSnickers.setBounds(15,351, anchoDepositos, altoDepositos);
-        depSuper8.setBounds(15,463, anchoDepositos, altoDepositos);
+        depSprite.setBounds(15, 15, anchoDepositos, altoDepositos);
+        depCoca.setBounds(15, 127, anchoDepositos, altoDepositos);
+        depFanta.setBounds(15, 239, anchoDepositos, altoDepositos);
+        depSnickers.setBounds(15, 351, anchoDepositos, altoDepositos);
+        depSuper8.setBounds(15, 463, anchoDepositos, altoDepositos);
         //bandeja de salida
         g.setColor(Color.BLACK);
-        g.drawRect(  70 ,   600, 190,50);
-        depCompra.setBounds(71,601,188,48);
+        g.drawRect(70, 600, 190, 50);
+        depCompra.setBounds(71, 601, 188, 48);
         //manija de la bandeja de salida
-        g.fillRect(  132,  610, 66, 7);
+        g.fillRect(132, 610, 66, 7);
         //entrada de moneda
-        g2.drawRect(357,335,106,41);
-        txtEntradaM.setBounds(360,338,100,35);
+        g2.drawRect(357, 335, 106, 41);
+        txtEntradaM.setBounds(360, 338, 100, 35);
         txtEntradaM.setEditable(false);
         txtEntradaM.setOpaque(true);
         txtEntradaM.setBackground(Color.BLUE);
         txtEntradaM.setForeground(Color.WHITE);
-        g.fillRect(390,388,40,100);
+        g.fillRect(390, 388, 40, 100);
         g.setColor(Color.GRAY);
-        g.fillRect(395,393,30,90);
+        g.fillRect(395, 393, 30, 90);
         g.setColor(Color.WHITE);
-        g.fillRect(405,400,10,76);
+        g.fillRect(405, 400, 10, 76);
 
         //boton sprite
-        btnSprite.setBounds(  327,50,ladoBtn,ladoBtn);
+        btnSprite.setBounds(327, 50, ladoBtn, ladoBtn);
         btnSprite.setFocusPainted(false);
-        Icon a = new ImageIcon(imSprite.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        Icon a = new ImageIcon(imSprite.getImage().getScaledInstance(ladoBtn, ladoBtn, Image.SCALE_DEFAULT));
         btnSprite.setIcon(a);
         //boton Cocacola
-        btnCoca.setBounds(  417,   50,ladoBtn,ladoBtn);
+        btnCoca.setBounds(417, 50, ladoBtn, ladoBtn);
         btnCoca.setFocusPainted(false);
-        Icon b = new ImageIcon(imCoca.getImage().getScaledInstance(ladoBtn,ladoBtn, Image.SCALE_DEFAULT));
+        Icon b = new ImageIcon(imCoca.getImage().getScaledInstance(ladoBtn, ladoBtn, Image.SCALE_DEFAULT));
         btnCoca.setIcon(b);
         //boton fanta
-        btnFanta.setBounds(  327,  135,ladoBtn,ladoBtn);
+        btnFanta.setBounds(327, 135, ladoBtn, ladoBtn);
         btnFanta.setFocusPainted(false);
-        Icon c = new ImageIcon(imFanta.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        Icon c = new ImageIcon(imFanta.getImage().getScaledInstance(ladoBtn, ladoBtn, Image.SCALE_DEFAULT));
         btnFanta.setIcon(c);
         //boton Snickers
-        btnSnickers.setBounds(  417,   135,ladoBtn,ladoBtn);
+        btnSnickers.setBounds(417, 135, ladoBtn, ladoBtn);
         btnSnickers.setFocusPainted(false);
-        Icon d = new ImageIcon(imSnickers.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        Icon d = new ImageIcon(imSnickers.getImage().getScaledInstance(ladoBtn, ladoBtn, Image.SCALE_DEFAULT));
         btnSnickers.setIcon(d);
         //boton Super8
-        btnSuper8.setBounds(  372,  220,ladoBtn,ladoBtn);
+        btnSuper8.setBounds(372, 220, ladoBtn, ladoBtn);
         btnSuper8.setFocusPainted(false);
-        Icon e = new ImageIcon(imSuper8.getImage().getScaledInstance(ladoBtn,ladoBtn,Image.SCALE_DEFAULT));
+        Icon e = new ImageIcon(imSuper8.getImage().getScaledInstance(ladoBtn, ladoBtn, Image.SCALE_DEFAULT));
         btnSuper8.setIcon(e);
+
+    }
+
+    public void eventosBotones() {
+        btnSprite.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e1) {
+                Moneda m = new Moneda1000();
+                try{
+                    exp.comprarProducto(m, SeleccionProductos.Sprite);
+                    numSprites-=1;
+                    depSprite.setNumProductos(numSprites);
+
+                }catch(PagoInsuficienteException e){
+                    System.out.println(e.getMessage());
+                }catch(PagoIncorrectoException e){
+                    System.out.println(e.getMessage());
+                }catch(NoHayProductoException e){
+                    System.out.println(e.getMessage());
+                }
+                repaint();
+            }
+        });
+        btnCoca.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e1){
+                Moneda m = new Moneda1000();
+                try{
+                    exp.comprarProducto(m, SeleccionProductos.Cocacola);
+                    numCocas-=1;
+                    depCoca.setNumProductos(numCocas);
+
+                }catch(PagoInsuficienteException e){
+                    System.out.println(e.getMessage());
+                }catch(PagoIncorrectoException e){
+                    System.out.println(e.getMessage());
+                }catch(NoHayProductoException e){
+                    System.out.println(e.getMessage());
+                }
+                repaint();
+            }
+        });
+        btnFanta.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e1){
+                Moneda m = new Moneda1000();
+                try{
+                    exp.comprarProducto(m, SeleccionProductos.Fanta);
+                    numFantas-=1;
+                    depFanta.setNumProductos(numFantas);
+
+                }catch(PagoInsuficienteException e){
+                    System.out.println(e.getMessage());
+                }catch(PagoIncorrectoException e){
+                    System.out.println(e.getMessage());
+                }catch(NoHayProductoException e){
+                    System.out.println(e.getMessage());
+                }
+                repaint();
+            }
+        });
+        btnSnickers.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e1){
+                Moneda m = new Moneda1000();
+                try{
+                    exp.comprarProducto(m, SeleccionProductos.Snickers);
+                    numSnickers-=1;
+                    depSnickers.setNumProductos(numSnickers);
+
+                }catch(PagoInsuficienteException e){
+                    System.out.println(e.getMessage());
+                }catch(PagoIncorrectoException e){
+                    System.out.println(e.getMessage());
+                }catch(NoHayProductoException e){
+                    System.out.println(e.getMessage());
+                }
+                repaint();
+            }
+        });
+        btnSuper8.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e1){
+                Moneda m = new Moneda1000();
+                try{
+                    exp.comprarProducto(m, SeleccionProductos.Super8);
+                    numSuper8-=1;
+                    depSuper8.setNumProductos(numSuper8);
+
+                }catch(PagoInsuficienteException e){
+                    System.out.println(e.getMessage());
+                }catch(PagoIncorrectoException e){
+                    System.out.println(e.getMessage());
+                }catch(NoHayProductoException e){
+                    System.out.println(e.getMessage());
+                }
+                repaint();
+            }
+        });
     }
 }
