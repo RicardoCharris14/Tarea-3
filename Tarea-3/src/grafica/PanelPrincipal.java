@@ -3,6 +3,8 @@ import logica.SeleccionMonedas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -21,9 +23,59 @@ public class PanelPrincipal extends JPanel {
         this.add(com);
 
         clickDpstCompra();
+        actionBtnSprite();
+        actionBtnCoca();
+        actionBtnFanta();
+        actionBtnSnickers();
+        actionBtnSuper8();
 
         this.setLayout(null);
         this.setBackground(Color.WHITE);
+    }
+    public void actionBtnSprite(){
+        ActionListener listener= new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exp.eventoBtnSprite(com.getComprador());
+            }
+        };
+        exp.setActionBtnSprite(listener);
+    }
+    public void actionBtnCoca(){
+        ActionListener listener= new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exp.eventoBtnCoca(com.getComprador());
+            }
+        };
+        exp.setActionBtnCoca(listener);
+    }
+    public void actionBtnFanta(){
+        ActionListener listener= new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exp.eventoBtnFanta(com.getComprador());
+            }
+        };
+        exp.setActionBtnFanta(listener);
+    }
+    public void actionBtnSnickers(){
+        ActionListener listener= new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exp.eventoBtnSnickers(com.getComprador());
+            }
+        };
+        exp.setActionBtnSnickers(listener);
+    }
+    public void actionBtnSuper8(){
+        ActionListener listener= new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                exp.eventoBtnSuper8(com.getComprador());
+            }
+        };
+        exp.setActionBtnSuper8(listener);
     }
     public void clickDpstCompra() {
         MouseListener captador = new MouseListener() {

@@ -74,7 +74,6 @@ public class PanelExpendedor extends JPanel {
         this.add(btnSuper8);
         this.add(txtEntradaM);
 
-        eventosBotones();
         clickDepCompra();
 
         this.setLayout(null);
@@ -178,108 +177,105 @@ public class PanelExpendedor extends JPanel {
     public void setSeleccionM(SeleccionMonedas seleccionM){
         this.seleccionM = seleccionM;
     }
+    public void eventoBtnSprite(Comprador comprador){
+        Moneda m = new Moneda1000();
+        try{
+            comprador.comprarProducto(exp, SeleccionProductos.SPRITE);
+            depCompra.setSeleccion(SeleccionProductos.SPRITE);
+            numSprites-=1;
+            depSprite.setNumProductos(numSprites);
 
-    public void eventosBotones() {
-        btnSprite.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e1) {
-                Moneda m = new Moneda1000();
-                try{
-                    exp.comprarProducto(m, SeleccionProductos.SPRITE);
-                    depCompra.setSeleccion(SeleccionProductos.SPRITE);
-                    numSprites-=1;
-                    depSprite.setNumProductos(numSprites);
+        }catch(PagoInsuficienteException e){
+            System.out.println(e.getMessage());
+        }catch(PagoIncorrectoException e){
+            System.out.println(e.getMessage());
+        }catch(NoHayProductoException e){
+            System.out.println(e.getMessage());
+        }
+        repaint();
+    }
+    public void eventoBtnCoca(Comprador comprador){
+        Moneda m = new Moneda1000();
+        try{
+            comprador.comprarProducto(exp, SeleccionProductos.COCACOLA);
+            depCompra.setSeleccion(SeleccionProductos.COCACOLA);
+            numCocas-=1;
+            depCoca.setNumProductos(numCocas);
 
-                }catch(PagoInsuficienteException e){
-                    System.out.println(e.getMessage());
-                }catch(PagoIncorrectoException e){
-                    System.out.println(e.getMessage());
-                }catch(NoHayProductoException e){
-                    System.out.println(e.getMessage());
-                }
-                repaint();
-            }
-        });
-        btnCoca.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e1){
-                Moneda m = new Moneda1000();
-                try{
-                    exp.comprarProducto(m, SeleccionProductos.COCACOLA);
-                    depCompra.setSeleccion(SeleccionProductos.COCACOLA);
-                    numCocas-=1;
-                    depCoca.setNumProductos(numCocas);
+        }catch(PagoInsuficienteException e){
+            System.out.println(e.getMessage());
+        }catch(PagoIncorrectoException e){
+            System.out.println(e.getMessage());
+        }catch(NoHayProductoException e){
+            System.out.println(e.getMessage());
+        }
+        repaint();
+    }
+    public void eventoBtnFanta(Comprador comprador){
+        Moneda m = new Moneda1000();
+        try{
+            comprador.comprarProducto(exp, SeleccionProductos.FANTA);
+            depCompra.setSeleccion(SeleccionProductos.FANTA);
+            numFantas-=1;
+            depFanta.setNumProductos(numFantas);
 
-                }catch(PagoInsuficienteException e){
-                    System.out.println(e.getMessage());
-                }catch(PagoIncorrectoException e){
-                    System.out.println(e.getMessage());
-                }catch(NoHayProductoException e){
-                    System.out.println(e.getMessage());
-                }
-                repaint();
-            }
-        });
-        btnFanta.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e1){
-                Moneda m = new Moneda1000();
-                try{
-                    exp.comprarProducto(m, SeleccionProductos.FANTA);
-                    depCompra.setSeleccion(SeleccionProductos.FANTA);
-                    numFantas-=1;
-                    depFanta.setNumProductos(numFantas);
+        }catch(PagoInsuficienteException e){
+            System.out.println(e.getMessage());
+        }catch(PagoIncorrectoException e){
+            System.out.println(e.getMessage());
+        }catch(NoHayProductoException e){
+            System.out.println(e.getMessage());
+        }
+        repaint();
+    }
+    public void eventoBtnSnickers(Comprador comprador){
+        Moneda m = new Moneda1000();
+        try{
+            comprador.comprarProducto(exp, SeleccionProductos.SNICKERS);
+            depCompra.setSeleccion(SeleccionProductos.SNICKERS);
+            numSnickers-=1;
+            depSnickers.setNumProductos(numSnickers);
 
-                }catch(PagoInsuficienteException e){
-                    System.out.println(e.getMessage());
-                }catch(PagoIncorrectoException e){
-                    System.out.println(e.getMessage());
-                }catch(NoHayProductoException e){
-                    System.out.println(e.getMessage());
-                }
-                repaint();
-            }
-        });
-        btnSnickers.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e1){
-                Moneda m = new Moneda1000();
-                try{
-                    exp.comprarProducto(m, SeleccionProductos.SNICKERS);
-                    depCompra.setSeleccion(SeleccionProductos.SNICKERS);
-                    numSnickers-=1;
-                    depSnickers.setNumProductos(numSnickers);
+        }catch(PagoInsuficienteException e){
+            System.out.println(e.getMessage());
+        }catch(PagoIncorrectoException e){
+            System.out.println(e.getMessage());
+        }catch(NoHayProductoException e){
+            System.out.println(e.getMessage());
+        }
+        repaint();
+    }
+    public void eventoBtnSuper8(Comprador comprador){
+        Moneda m = new Moneda1000();
+        try{
+            comprador.comprarProducto(exp, SeleccionProductos.SUPER8);
+            depCompra.setSeleccion(SeleccionProductos.SUPER8);
+            numSuper8-=1;
+            depSuper8.setNumProductos(numSuper8);
 
-                }catch(PagoInsuficienteException e){
-                    System.out.println(e.getMessage());
-                }catch(PagoIncorrectoException e){
-                    System.out.println(e.getMessage());
-                }catch(NoHayProductoException e){
-                    System.out.println(e.getMessage());
-                }
-                repaint();
-            }
-        });
-        btnSuper8.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e1){
-                Moneda m = new Moneda1000();
-                try{
-                    exp.comprarProducto(m, SeleccionProductos.SUPER8);
-                    depCompra.setSeleccion(SeleccionProductos.SUPER8);
-                    numSuper8-=1;
-                    depSuper8.setNumProductos(numSuper8);
-
-                }catch(PagoInsuficienteException e){
-                    System.out.println(e.getMessage());
-                }catch(PagoIncorrectoException e){
-                    System.out.println(e.getMessage());
-                }catch(NoHayProductoException e){
-                    System.out.println(e.getMessage());
-                }
-                repaint();
-            }
-        });
+        }catch(PagoInsuficienteException e){
+            System.out.println(e.getMessage());
+        }catch(PagoIncorrectoException e){
+            System.out.println(e.getMessage());
+        }catch(NoHayProductoException e){
+            System.out.println(e.getMessage());
+        }
+        repaint();
+    }
+    public void setActionBtnSprite(ActionListener actionListener){
+        btnSprite.addActionListener(actionListener);
+    }
+    public void setActionBtnCoca(ActionListener actionListener){
+        btnCoca.addActionListener(actionListener);
+    }
+    public void setActionBtnFanta(ActionListener actionListener){
+        btnFanta.addActionListener(actionListener);
+    }
+    public void setActionBtnSnickers(ActionListener actionListener){
+        btnSnickers.addActionListener(actionListener);
+    }
+    public void setActionBtnSuper8(ActionListener actionListener){
+        btnSuper8.addActionListener(actionListener);
     }
     public void clickDepCompra(){
         depCompra.setSeleccion(SeleccionProductos.NULO);
