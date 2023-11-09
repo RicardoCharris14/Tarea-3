@@ -23,6 +23,10 @@ public class PanelPrincipal extends JPanel {
         this.add(com);
 
         clickDpstCompra();
+        clickMoneda100();
+        clickMoneda500();
+        clickMoneda1000();
+        clickMoneda5000();
         actionBtnSprite();
         actionBtnCoca();
         actionBtnFanta();
@@ -41,6 +45,7 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnSprite(listener);
     }
+
     public void actionBtnCoca(){
         ActionListener listener= new ActionListener(){
             @Override
@@ -50,6 +55,7 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnCoca(listener);
     }
+
     public void actionBtnFanta(){
         ActionListener listener= new ActionListener(){
             @Override
@@ -59,6 +65,7 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnFanta(listener);
     }
+
     public void actionBtnSnickers(){
         ActionListener listener= new ActionListener(){
             @Override
@@ -68,6 +75,7 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnSnickers(listener);
     }
+
     public void actionBtnSuper8(){
         ActionListener listener= new ActionListener(){
             @Override
@@ -77,40 +85,22 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnSuper8(listener);
     }
-    public void clickDpstCompra() {
-        MouseListener captador = new MouseListener() {
+
+    public void clickMoneda100(){
+        MouseListener captador1 = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int panelX = exp.getX() + 71;
-                int panelY = exp.getY() + 601;
-                int panelAncho = 188;
-                int panelAlto = 48;
                 int clickX = e.getX();
                 int clickY = e.getY();
-                if (clickX >= panelX && clickX <= panelX + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
-                    exp.clickDepCompra();
-                }
-                panelX = com.getX();
-                panelY = com.getY();
-                panelAncho = 80;
-                panelAlto = 80;
+                int panelX = com.getX();
+                int panelY = com.getY();
+                int panelAncho = 80;
+                int panelAlto = 80;
                 if (clickX >= panelX + 10 && clickX <= panelX + 10 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
                     com.clickMoneda100();
                     exp.setSeleccionM(SeleccionMonedas.MONEDA100);
+                    repaint();
                 }
-                if (clickX >= panelX + 90 && clickX <= panelX + 90 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
-                    com.clickMoneda500();
-                    exp.setSeleccionM(SeleccionMonedas.MONEDA500);
-                }
-                if (clickX >= panelX + 170 && clickX <= panelX + 170 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
-                    com.clickMoneda1000();
-                    exp.setSeleccionM(SeleccionMonedas.MONEDA1000);
-                }
-                if (clickX >= panelX + 270 && clickX <= panelX + 270 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
-                    com.clickMoneda5000();
-                    exp.setSeleccionM(SeleccionMonedas.MONEDA5000);
-                }
-                repaint();
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -121,7 +111,122 @@ public class PanelPrincipal extends JPanel {
             @Override
             public void mouseExited(MouseEvent e) {}
         };
-        this.addMouseListener(captador);
+        this.addMouseListener(captador1);
+    }
+
+    public void clickMoneda500(){
+        MouseListener captador2 = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int clickX = e.getX();
+                int clickY = e.getY();
+                int panelX = com.getX();
+                int panelY = com.getY();
+                int panelAncho = 80;
+                int panelAlto = 80;
+                if (clickX >= panelX + 90 && clickX <= panelX + 90 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
+                    com.clickMoneda500();
+                    exp.setSeleccionM(SeleccionMonedas.MONEDA500);
+                    repaint();
+                }
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        };
+        this.addMouseListener(captador2);
+    }
+
+    public void clickMoneda1000(){
+        MouseListener captador3 = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int clickX = e.getX();
+                int clickY = e.getY();
+                int panelX = com.getX();
+                int panelY = com.getY();
+                int panelAncho = 80;
+                int panelAlto = 80;
+                if (clickX >= panelX + 170 && clickX <= panelX + 170 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
+                    com.clickMoneda1000();
+                    exp.setSeleccionM(SeleccionMonedas.MONEDA1000);
+                    repaint();
+                }
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        };
+        this.addMouseListener(captador3);
+    }
+
+    public void clickMoneda5000(){
+        MouseListener captador4 = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int clickX = e.getX();
+                int clickY = e.getY();
+                int panelX = com.getX();
+                int panelY = com.getY();
+                int panelAncho = 80;
+                int panelAlto = 80;
+                if (clickX >= panelX + 270 && clickX <= panelX + 270 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
+                    com.clickMoneda5000();
+                    exp.setSeleccionM(SeleccionMonedas.MONEDA5000);
+                    repaint();
+                }
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        };
+        this.addMouseListener(captador4);
+    }
+
+    public void clickDpstCompra() {
+        MouseListener captador5 = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int panelX = exp.getX() + 71;
+                int panelY = exp.getY() + 601;
+                int panelAncho = 188;
+                int panelAlto = 48;
+                int clickX = e.getX();
+                int clickY = e.getY();
+                if (clickX >= panelX && clickX <= panelX + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
+                    if(com.getComprador()!= null){
+                        if(com.getComprador().getHayProducto()){
+                            exp.clickDepCompra(com.getComprador());
+                            repaint();
+                        }
+                    }
+                }
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        };
+        this.addMouseListener(captador5);
     }
 
     @Override

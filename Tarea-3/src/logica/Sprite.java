@@ -15,7 +15,7 @@ public class Sprite extends Bebida {
      * @return String que indica que se bebio la sprite
      */
     public String consumir(){
-        return "Me bebi una sprite";
+        return "La Sprite es la mejor bebida del mundo";
     }
 
     /**

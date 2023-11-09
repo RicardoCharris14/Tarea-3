@@ -150,7 +150,9 @@ public class Expendedor {
      * @return devuelve el objeto de tipo logica.Producto que compro el comprador
      */
     public Producto getProducto(){
-        return productoComprado;
+        Producto productoTmp = productoComprado;
+        productoComprado = null;
+        return productoTmp;
     }
 
     /**

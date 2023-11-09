@@ -7,13 +7,21 @@ package logica;
  */
 public class Comprador {
     /**
+     * indica si el comprador compro algun producto
+     */
+    private Boolean hayProducto;
+    /**
+     * indica si es que se consumio el producto
+     */
+    private Boolean ProductoConsumido;
+    /**
      * variable que guarda la moneda del comprador
      */
     private Moneda moneda;
     /**
-     * variable que guarda el producto del comprador
+     * variable que guarda el mensaje del producto comprado
      */
-    private Producto productoComprado;
+    private String msgProducto;
     /**
      * variable que guarda el vuelto de la compra
      */
@@ -24,8 +32,10 @@ public class Comprador {
      * @param moneda recibe una moneda
      */
     public Comprador(Moneda moneda) {
+        hayProducto = false;
+        ProductoConsumido = false;
         vuelto = 0;
-        productoComprado = null;
+        msgProducto = null;
         this.moneda = moneda;
     }
 
@@ -40,7 +50,6 @@ public class Comprador {
     public void comprarProducto(Expendedor exp, SeleccionProductos seleccion) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException{
         exp.comprarProducto(moneda, seleccion);
         moneda = null;
-        productoComprado = exp.getProducto();
 
         Moneda tmp = exp.getVuelto();
         while(tmp != null) {
@@ -50,15 +59,14 @@ public class Comprador {
     }
 
     /**
-     * consume el producto
-     * @return retorna string sobre que producto se consumio
+     * consume el producto y guarda su mensaje en msgProducto
      */
-    public String consumirProducto(){
-        String productoConsumido = null;
-        if(productoComprado != null) {
-            productoConsumido = productoComprado.consumir();
+    public void consumirProducto(Expendedor exp){
+        Producto producto = exp.getProducto();
+        if(producto != null) {
+            ProductoConsumido = true;
+            msgProducto = producto.consumir();
         }
-        return productoConsumido;
     }
 
     /**
@@ -67,5 +75,20 @@ public class Comprador {
      */
     public int getVuelto(){
         return vuelto;
+    }
+    public String getMsgProducto(){
+        return msgProducto;
+    }
+    public Boolean getProductoConsumido(){
+        return ProductoConsumido;
+    }
+    public void setProductoConsumido(Boolean productoConsumido){
+        this.ProductoConsumido = productoConsumido;
+    }
+    public Boolean getHayProducto(){
+        return hayProducto;
+    }
+    public void setHayProducto(Boolean hayProducto){
+        this.hayProducto = hayProducto;
     }
 }

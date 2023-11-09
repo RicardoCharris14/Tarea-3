@@ -17,7 +17,7 @@ public class Super8 extends Dulce {
      * @return String que indica que ya se comio el logica.Super8
      */
     public String consumir(){
-        return "Me comi un logica.Super8";
+        return "El Super8 es dulce no como el corazon de Ella";
     }
 
     /**

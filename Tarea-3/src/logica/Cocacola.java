@@ -17,7 +17,7 @@ public class Cocacola extends Bebida {
      * @return String que indica que se bebio una CocaCola
      */
     public String consumir(){
-        return "Me bebi una cocacola";
+        return "mmm Coca cola no, mejor ¡¡¡agua!!!";
     }
 
     /**

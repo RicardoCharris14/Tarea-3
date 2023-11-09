@@ -32,12 +32,23 @@ public class PanelComprador extends JPanel{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
-        g.drawImage(imCristianoMessi,0,150,534,404,this);
+        g.drawImage(imCristianoMessi,0,200,534,404,this);
 
         pnlMoneda100.setBounds(10,0,80,80);
         pnlMoneda500.setBounds(90,0,80,80);
         pnlMoneda1000.setBounds(170,0,80,80);
         pnlMoneda5000.setBounds(270,0,80,80);
+
+        if(comprador!=null){
+            if (comprador.getProductoConsumido()!=null){
+                if(comprador.getProductoConsumido()){
+                    g.setFont(new Font("Arial", Font.BOLD, 20));
+                    g.drawString(comprador.getMsgProducto(),0,650);
+                    comprador.setProductoConsumido(null);
+                }
+            }
+        }
+
     }
     public Comprador getComprador(){
         return comprador;

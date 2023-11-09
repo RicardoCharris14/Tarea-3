@@ -17,7 +17,7 @@ public class Fanta extends Bebida {
      * @return String que indica que se bebio una fanta
      */
     public String consumir(){
-        return "Me bebi una fanta";
+        return "Esta Fanta sabe bien";
     }
 
     /**

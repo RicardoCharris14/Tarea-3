@@ -17,7 +17,7 @@ public class Snickers extends Dulce {
      * @return String que indica que se consumio el logica.Snickers
      */
     public String consumir(){
-        return "Me comi un logica.Snickers";
+        return "Que rico es comerse un Snickers";
     }
 
     /**

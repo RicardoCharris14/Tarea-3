@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class PanelExpendedor extends JPanel {
+    private String msgProducto;
     private Expendedor exp;
     private SeleccionMonedas seleccionM;
     private PanelDepositoSprite depSprite;
@@ -34,6 +35,7 @@ public class PanelExpendedor extends JPanel {
     private int numSuper8 = numProductos;
 
     public PanelExpendedor() {
+        msgProducto = null;
         exp = new Expendedor(numProductos);
         seleccionM = SeleccionMonedas.NULO;
 
@@ -71,8 +73,6 @@ public class PanelExpendedor extends JPanel {
         this.add(btnSnickers);
         this.add(btnSuper8);
         this.add(txtEntradaM);
-
-        clickDepCompra();
 
         this.setLayout(null);
         setBackground(Color.cyan);
@@ -183,6 +183,7 @@ public class PanelExpendedor extends JPanel {
             numSprites-=1;
             depSprite.setNumProductos(numSprites);
             setSeleccionM(SeleccionMonedas.NULO);
+            comprador.setHayProducto(true);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -201,6 +202,7 @@ public class PanelExpendedor extends JPanel {
             numCocas-=1;
             depCoca.setNumProductos(numCocas);
             setSeleccionM(SeleccionMonedas.NULO);
+            comprador.setHayProducto(true);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -219,6 +221,7 @@ public class PanelExpendedor extends JPanel {
             numFantas-=1;
             depFanta.setNumProductos(numFantas);
             setSeleccionM(SeleccionMonedas.NULO);
+            comprador.setHayProducto(true);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -237,6 +240,7 @@ public class PanelExpendedor extends JPanel {
             numSnickers-=1;
             depSnickers.setNumProductos(numSnickers);
             setSeleccionM(SeleccionMonedas.NULO);
+            comprador.setHayProducto(true);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -255,6 +259,7 @@ public class PanelExpendedor extends JPanel {
             numSuper8-=1;
             depSuper8.setNumProductos(numSuper8);
             setSeleccionM(SeleccionMonedas.NULO);
+            comprador.setHayProducto(true);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -280,7 +285,8 @@ public class PanelExpendedor extends JPanel {
     public void setActionBtnSuper8(ActionListener actionListener){
         btnSuper8.addActionListener(actionListener);
     }
-    public void clickDepCompra(){
+    public void clickDepCompra(Comprador comprador){
+        comprador.consumirProducto(exp);
         depCompra.setSeleccion(SeleccionProductos.NULO);
         repaint();
     }
