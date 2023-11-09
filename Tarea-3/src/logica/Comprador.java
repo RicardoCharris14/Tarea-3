@@ -3,7 +3,7 @@ package logica;
 /**
  * clase que representa a un comprador
  * @author Ricardo Charris
- * @author Vicente Ramírez
+ * @author Vicente RamÃ­rez
  */
 public class Comprador {
     /**
@@ -39,6 +39,7 @@ public class Comprador {
      */
     public void comprarProducto(Expendedor exp, SeleccionProductos seleccion) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException{
         exp.comprarProducto(moneda, seleccion);
+        moneda = null;
         productoComprado = exp.getProducto();
 
         Moneda tmp = exp.getVuelto();
@@ -67,6 +68,4 @@ public class Comprador {
     public int getVuelto(){
         return vuelto;
     }
-
 }
-

@@ -3,9 +3,7 @@ import logica.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 
 public class PanelExpendedor extends JPanel {
     private Expendedor exp;
@@ -184,6 +182,7 @@ public class PanelExpendedor extends JPanel {
             depCompra.setSeleccion(SeleccionProductos.SPRITE);
             numSprites-=1;
             depSprite.setNumProductos(numSprites);
+            setSeleccionM(SeleccionMonedas.NULO);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -201,6 +200,7 @@ public class PanelExpendedor extends JPanel {
             depCompra.setSeleccion(SeleccionProductos.COCACOLA);
             numCocas-=1;
             depCoca.setNumProductos(numCocas);
+            setSeleccionM(SeleccionMonedas.NULO);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -218,6 +218,7 @@ public class PanelExpendedor extends JPanel {
             depCompra.setSeleccion(SeleccionProductos.FANTA);
             numFantas-=1;
             depFanta.setNumProductos(numFantas);
+            setSeleccionM(SeleccionMonedas.NULO);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -235,6 +236,7 @@ public class PanelExpendedor extends JPanel {
             depCompra.setSeleccion(SeleccionProductos.SNICKERS);
             numSnickers-=1;
             depSnickers.setNumProductos(numSnickers);
+            setSeleccionM(SeleccionMonedas.NULO);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
@@ -252,6 +254,7 @@ public class PanelExpendedor extends JPanel {
             depCompra.setSeleccion(SeleccionProductos.SUPER8);
             numSuper8-=1;
             depSuper8.setNumProductos(numSuper8);
+            setSeleccionM(SeleccionMonedas.NULO);
 
         }catch(PagoInsuficienteException e){
             System.out.println(e.getMessage());
