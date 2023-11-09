@@ -98,7 +98,7 @@ class ExpendedorTest {
     void TestMonedaNoValida(){
         Producto producto = null;
         String comprobacion = null;
-        Moneda m1 = new Moneda1500();
+        Moneda m1 = new Moneda5000();
         Expendedor exp1 = new Expendedor(0);
         try{
             producto = exp1.comprarProducto(m1,SeleccionProductos.SPRITE);

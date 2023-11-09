@@ -1,6 +1,6 @@
 import logica.Moneda;
 import logica.Moneda1000;
-import logica.Moneda1500;
+import logica.Moneda5000;
 import logica.Moneda500;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ class MonedaTest {
     @Test
     void TestCompareTo() {
         int prueba;
-        Moneda m1 = new Moneda1500();
+        Moneda m1 = new Moneda5000();
         Moneda m2 = new Moneda1000();
         Moneda m3 = new Moneda1000();
         prueba = m1.compareTo(m2);

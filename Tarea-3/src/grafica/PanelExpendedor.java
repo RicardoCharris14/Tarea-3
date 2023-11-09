@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class PanelExpendedor extends JPanel {
     private Expendedor exp;
+    private SeleccionMonedas seleccionM;
     private PanelDepositoSprite depSprite;
     private PanelDepositoCoca depCoca;
     private PanelDepositoFanta depFanta;
@@ -20,6 +21,7 @@ public class PanelExpendedor extends JPanel {
     private ImageIcon imFanta;
     private ImageIcon imSnickers;
     private ImageIcon imSuper8;
+    private Image imMoneda;
     private JButton btnSprite;
     private JButton btnCoca;
     private JButton btnFanta;
@@ -35,6 +37,7 @@ public class PanelExpendedor extends JPanel {
 
     public PanelExpendedor() {
         exp = new Expendedor(numProductos);
+        seleccionM = SeleccionMonedas.NULO;
 
         depSprite = new PanelDepositoSprite(numProductos);
         depCoca = new PanelDepositoCoca(numProductos);
@@ -150,7 +153,30 @@ public class PanelExpendedor extends JPanel {
         btnSuper8.setFocusPainted(false);
         Icon e = new ImageIcon(imSuper8.getImage().getScaledInstance(ladoBtn, ladoBtn, Image.SCALE_DEFAULT));
         btnSuper8.setIcon(e);
-
+        //Monedas de compra
+        switch (seleccionM){
+            case MONEDA100 -> {
+                imMoneda = new ImageIcon("src/grafica/imagenes/moneda100.png").getImage();
+                g.drawImage(imMoneda,420,400,76,76,this);
+            }
+            case MONEDA500 -> {
+                imMoneda = new ImageIcon("src/grafica/imagenes/moneda500.png").getImage();
+                g.drawImage(imMoneda,420,400,76,76,this);
+            }
+            case MONEDA1000 -> {
+                imMoneda = new ImageIcon("src/grafica/imagenes/moneda1000.png").getImage();
+                g.drawImage(imMoneda,420,400,76,76,this);
+            }
+            case MONEDA5000 -> {
+                imMoneda = new ImageIcon("src/grafica/imagenes/moneda5000.png").getImage();
+                g.drawImage(imMoneda,420,400,76,76,this);
+            }
+            default -> {
+            }
+        }
+    }
+    public void setSeleccionM(SeleccionMonedas seleccionM){
+        this.seleccionM = seleccionM;
     }
 
     public void eventosBotones() {

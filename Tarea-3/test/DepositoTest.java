@@ -8,7 +8,7 @@ class DepositoTest {
     @Test
     void DepositoMonedas() {
         Deposito<Moneda> monedas = new Deposito<>();
-        Moneda m1 = new Moneda1500();
+        Moneda m1 = new Moneda5000();
         Moneda tmp;
         monedas.addElemento(m1);
         tmp = monedas.getElemento();

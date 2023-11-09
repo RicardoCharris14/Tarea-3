@@ -1,8 +1,5 @@
 package logica;
 
-import logica.Expendedor;
-import logica.Producto;
-
 /**
  * clase que representa a un comprador
  * @author Ricardo Charris
@@ -10,44 +7,56 @@ import logica.Producto;
  */
 public class Comprador {
     /**
-     * variable que guarda el producto que ha consumido el comprador
+     * variable que guarda la moneda del comprador
      */
-    private String productoConsumido;
+    private Moneda moneda;
+    /**
+     * variable que guarda el producto del comprador
+     */
+    private Producto productoComprado;
     /**
      * variable que guarda el vuelto de la compra
      */
     private int vuelto;
 
     /**
-     * constructor de logica.Comprador que crea una instancia de logica.Producto, a la que le asigna el precio y su eleccion de acuerdo al enum de logica.SeleccionProductos,
-     * si producto comprado existe, el producto es consumido, tambien calcula el vuelto del producto.
-     * @param m recibe una moneda
-     * @param eleccion hace referencia a los productos del enum
-     * @param exp es una refencia a expendedor
-     * @throws PagoInsuficienteException cuando el pago no satisface el precio total del producto lanza esta exception
-     * @throws PagoIncorrectoException cuando se ingresa una moneda null lanza esta exception
-     * @throws NoHayProductoException  cuando selecciona un producto inexistente lanza esta exception
+     * constructor de Comprador que inicializa las variables
+     * @param moneda recibe una moneda
      */
-    public Comprador(Moneda m, SeleccionProductos eleccion, Expendedor exp) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException {
+    public Comprador(Moneda moneda) {
         vuelto = 0;
-        productoConsumido = null;
-        exp.comprarProducto(m, eleccion);
-        Producto productoComprado = exp.getProducto();
-        if(productoComprado != null) {
-            productoConsumido = productoComprado.consumir();
-        }
+        productoComprado = null;
+        this.moneda = moneda;
+    }
+
+    /**
+     * Compra un producto en expendedor, el producto es consumido y se calcula el vuelto del producto.
+     * @param exp expendedor en el que se realiza la compra
+     * @param seleccion se usa para elegir el producto a comprar
+     * @throws PagoInsuficienteException cuando el pago no satisface el precio total del producto lanza esta exception
+     * @throws PagoIncorrectoException cuando se ingresa una moneda null o no valida lanza esta exception
+     * @throws NoHayProductoException cuando selecciona un producto inexistente o agotado lanza esta exception
+     */
+    public void comprarProducto(Expendedor exp, SeleccionProductos seleccion) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException{
+        exp.comprarProducto(moneda, seleccion);
+        productoComprado = exp.getProducto();
+
         Moneda tmp = exp.getVuelto();
-        while(tmp != null){
+        while(tmp != null) {
             vuelto += tmp.getValor();
             tmp = exp.getVuelto();
         }
     }
 
     /**
-     * metodo que guarda lo que va a consumir el comprador
-     * @return devuelve el  producto que va a consumir
+     * consume el producto
+     * @return retorna string sobre que producto se consumio
      */
-    public String queConsumiste(){
+    public String consumirProducto(){
+        String productoConsumido = null;
+        if(productoComprado != null) {
+            productoConsumido = productoComprado.consumir();
+        }
         return productoConsumido;
     }
 

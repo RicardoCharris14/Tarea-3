@@ -98,7 +98,7 @@ class CompradorTest {
     @Test
     void TestMonedaNoValida(){
         String comprobacion = null;
-        Moneda m1 = new Moneda1500();
+        Moneda m1 = new Moneda5000();
         Expendedor exp1 = new Expendedor(0);
         Comprador comprador = null;
         try{
