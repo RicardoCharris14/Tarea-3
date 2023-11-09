@@ -2,10 +2,18 @@ package grafica;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * Clase que simula el panel donde se depositan los dulces Snickers
+ * @author Vicente Ramirez
+ * @author Ricardo Charris
+ */
 public class PanelDepositoSnickers extends JPanel {
     private Image imSnickers;
     private int numProductos;
+    /**
+     * Constructor que inicializa la imagen de Cocacola
+     * @param numProductos recibe la cantidad de productos del tipo Snickers
+     */
     public PanelDepositoSnickers(int numProductos){
         this.numProductos = numProductos;
 
@@ -13,11 +21,19 @@ public class PanelDepositoSnickers extends JPanel {
 
         this.setBackground(Color.BLACK);
     }
+    /**
+     * setter de numProductos
+     * @param numProductos recibe la cantidad de productos de Snickers
+     */
 
     public void setNumProductos(int numProductos){
         this.numProductos = numProductos;
     }
 
+    /**
+     * Metodo que pinta las imagenes de Snickers en el panel deposito del expendedor
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

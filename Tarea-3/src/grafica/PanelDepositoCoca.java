@@ -3,12 +3,21 @@ package grafica;
 import javax.swing.*;
 import java.awt.*;
 
-public class PanelDepositoCoca extends JPanel {
+/**
+ * Clase que simula el panel donde se depositan las bebidas Cocacola
+ * @author Vicente Ramirez
+ * @author Ricardo Charris
+ */
 
+public class PanelDepositoCoca extends JPanel {
     private Image imCoca;
-   
+
     private int numProductos;
 
+    /**
+     * Constructor que inicializa la imagen de Cocacola
+     * @param numProducto recibe la cantidad de productos del tipo Cocacola
+     */
     public PanelDepositoCoca(int numProducto){
         this.numProductos = numProducto;
 
@@ -17,10 +26,18 @@ public class PanelDepositoCoca extends JPanel {
         this.setBackground(Color.BLACK);
     }
 
+    /**
+     * setter de numProductos
+     * @param numProductos recibe la cantidad de productos de Cocacola
+     */
+
     public void setNumProductos(int numProductos){
         this.numProductos = numProductos;
     }
-
+    /**
+     * Metodo que pinta las imagenes de Cocacola en el panel deposito del expendedor
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);

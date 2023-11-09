@@ -1,9 +1,18 @@
 package grafica;
 import javax.swing.*;
 import java.awt.*;
+/**
+ * Clase que simula el panel donde se depositan las bebidas Sprite
+ * @author Vicente Ramirez
+ * @author Ricardo Charris
+ */
 public class PanelDepositoSprite extends JPanel{
     private Image imSprite;
     private int numProductos;
+    /**
+     * Constructor que inicializa la imagen de Cocacola
+     * @param numProductos recibe la cantidad de productos del tipo Sprite
+     */
     public PanelDepositoSprite(int numProductos){
         this.numProductos = numProductos;
 
@@ -11,11 +20,19 @@ public class PanelDepositoSprite extends JPanel{
 
         this.setBackground(Color.BLACK);
     }
+    /**
+     * setter de numProductos
+     * @param numProductos recibe la cantidad de productos de Sprite
+     */
 
     public void setNumProductos(int numProductos){
         this.numProductos = numProductos;
     }
 
+    /**
+     * Metodo que pinta las imagenes de Sprite en el panel deposito del expendedor
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
