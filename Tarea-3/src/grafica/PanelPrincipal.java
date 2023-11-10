@@ -16,7 +16,7 @@ public class PanelPrincipal extends JPanel {
         exp = new PanelExpendedor();
         com = new PanelComprador();
 
-        exp.setBounds(30, 30, 500, 750);
+        exp.setBounds(30, 30, 500, 700);
         com.setBounds(600, 30, 700, 700);
 
         this.add(exp);

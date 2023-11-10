@@ -1,16 +1,23 @@
 package grafica;
 import logica.*;
+import org.w3c.dom.html.HTMLSelectElement;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PanelComprador extends JPanel{
+    private SeleccionProductos productoComprado;
     private Comprador comprador;
     private PanelMoneda100 pnlMoneda100;
     private PanelMoneda500 pnlMoneda500;
     private PanelMoneda1000 pnlMoneda1000;
     private PanelMoneda5000 pnlMoneda5000;
     private Image imCristianoMessi;
+    private Image imSprite;
+    private Image imCoca;
+    private Image imFanta;
+    private Image imSnickers;
+    private Image imSuper8;
     public PanelComprador(){
         comprador = null;
         imCristianoMessi = new ImageIcon("src/grafica/imagenes/cr7ypessi.png").getImage();
@@ -28,6 +35,9 @@ public class PanelComprador extends JPanel{
         this.setLayout(null);
         this.setBackground(Color.white);
     }
+    public Comprador getComprador(){
+        return comprador;
+    }
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -40,18 +50,51 @@ public class PanelComprador extends JPanel{
         pnlMoneda5000.setBounds(270,0,80,80);
 
         if(comprador!=null){
-            if (comprador.getProductoConsumido()!=null){
-                if(comprador.getProductoConsumido()){
-                    g.setFont(new Font("Arial", Font.BOLD, 20));
+            productoComprado = comprador.getProductoConsumido();
+            switch(productoComprado){
+                case SPRITE -> {
+                    g.setFont(new Font("Arial", Font.BOLD, 30));
                     g.drawString(comprador.getMsgProducto(),0,650);
-                    comprador.setProductoConsumido(null);
+                    g.drawString("Mi vuelto fue de $"+comprador.getVuelto(),0,170);
+                    imSprite = new ImageIcon("src/grafica/imagenes/spriteRot45.png").getImage();
+                    g.drawImage(imSprite,130,460,120,120,this);
+                    comprador.setProductoConsumido(SeleccionProductos.NULO);
                 }
+                case COCACOLA ->{
+                    g.setFont(new Font("Arial", Font.BOLD, 30));
+                    g.drawString(comprador.getMsgProducto(),0,650);
+                    g.drawString("Mi vuelto fue de $"+comprador.getVuelto(),0,170);
+                    imCoca = new ImageIcon("src/grafica/imagenes/cocaRot45.png").getImage();
+                    g.drawImage(imCoca,130,460,120,120,this);
+                    comprador.setProductoConsumido(SeleccionProductos.NULO);
+                }
+                case FANTA -> {
+                    g.setFont(new Font("Arial", Font.BOLD, 30));
+                    g.drawString(comprador.getMsgProducto(),0,650);
+                    g.drawString("Mi vuelto fue de $"+comprador.getVuelto(),0,170);
+                    imFanta = new ImageIcon("src/grafica/imagenes/fanta.png").getImage();
+                    g.drawImage(imFanta,240,335,100,100,this);
+                    comprador.setProductoConsumido(SeleccionProductos.NULO);
+                }
+                case SNICKERS -> {
+                    g.setFont(new Font("Arial", Font.BOLD, 30));
+                    g.drawString(comprador.getMsgProducto(),0,650);
+                    g.drawString("Mi vuelto fue de $"+comprador.getVuelto(),0,170);
+                    imSnickers = new ImageIcon("src/grafica/imagenes/snickersparado.png").getImage();
+                    g.drawImage(imSnickers,236,325,130,130,this);
+                    comprador.setProductoConsumido(SeleccionProductos.NULO);
+                }
+                case SUPER8 -> {
+                    g.setFont(new Font("Arial", Font.BOLD, 30));
+                    g.drawString(comprador.getMsgProducto(),0,650);
+                    g.drawString("Mi vuelto fue de $"+comprador.getVuelto(),0,170);
+                    imSuper8 = new ImageIcon("src/grafica/imagenes/super8Rot45.png").getImage();
+                    g.drawImage(imSuper8,140,460,120,120,this);
+                    comprador.setProductoConsumido(SeleccionProductos.NULO);
+                }
+                default -> {}
             }
         }
-
-    }
-    public Comprador getComprador(){
-        return comprador;
     }
     public void clickMoneda100(){
         comprador = new Comprador(new Moneda100());

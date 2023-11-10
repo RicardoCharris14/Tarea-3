@@ -83,12 +83,12 @@ public class Expendedor {
 
     public void comprarProducto(Moneda m, SeleccionProductos n_producto )throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException {
         if (m==null){
-            throw new PagoIncorrectoException("\nNo se ha ingresado una moneda.\n");
+            throw new PagoIncorrectoException("\nNo se ha ingresado\n una moneda.\n");
         }
         if (m.getValor()!= 100 && m.getValor()!= 500 && m.getValor()!=1000) {
             monedasVuelto.addElemento(m);
             productoComprado = null;
-            throw new PagoIncorrectoException("\nMoneda Ingresada Invalida");
+            throw new PagoIncorrectoException("\nMoneda Ingresada\n Invalida");
         }
         else if(m.getValor()>=n_producto.getPrecio()){
             Producto producto1;
@@ -110,7 +110,7 @@ public class Expendedor {
                     break;
                 default:
                     monedasVuelto.addElemento(m);
-                    throw new NoHayProductoException("\nSeleccion de producto invalida.\n");
+                    throw new NoHayProductoException("\nSeleccion de producto\n invalida.\n");
 
             }
 
@@ -125,14 +125,14 @@ public class Expendedor {
             else{
                 System.out.println(m.getValor());
                 monedasVuelto.addElemento(m);
-                throw new NoHayProductoException("\nNo hay disponibilidad del producto que se solicitó.\n");
+                throw new NoHayProductoException("\nNo hay disponibilidad\n del producto que\n se solicitó.\n");
 
             }
             productoComprado = producto1;
         }
         else{
             monedasVuelto.addElemento(m);
-            throw new PagoInsuficienteException("\nEl monto ingresado es insuficiente.\n");
+            throw new PagoInsuficienteException("\nEl monto ingresado\n es insuficiente.\n");
         }
 
     }

@@ -27,6 +27,7 @@ public class PanelExpendedor extends JPanel {
     private JButton btnSnickers;
     private JButton btnSuper8;
     private JTextArea txtEntradaM;
+    private JTextArea etiquetaExcepciones;
     private final int numProductos = 5;
     private int numSprites = numProductos;
     private int numCocas = numProductos;
@@ -59,8 +60,10 @@ public class PanelExpendedor extends JPanel {
         btnSuper8 = new JButton();
 
         txtEntradaM = new JTextArea(" Ingrese moneda\n(100, 500,o 1000)");
+        etiquetaExcepciones = new JTextArea();
+        etiquetaExcepciones.setVisible(false);
 
-
+        this.add(etiquetaExcepciones);
         this.add(depSprite);
         this.add(depCoca);
         this.add(depFanta);
@@ -76,6 +79,21 @@ public class PanelExpendedor extends JPanel {
 
         this.setLayout(null);
         setBackground(Color.cyan);
+    }
+    public void setActionBtnSprite(ActionListener actionListener){
+        btnSprite.addActionListener(actionListener);
+    }
+    public void setActionBtnCoca(ActionListener actionListener){
+        btnCoca.addActionListener(actionListener);
+    }
+    public void setActionBtnFanta(ActionListener actionListener){
+        btnFanta.addActionListener(actionListener);
+    }
+    public void setActionBtnSnickers(ActionListener actionListener){
+        btnSnickers.addActionListener(actionListener);
+    }
+    public void setActionBtnSuper8(ActionListener actionListener){
+        btnSuper8.addActionListener(actionListener);
     }
 
     @Override
@@ -171,119 +189,163 @@ public class PanelExpendedor extends JPanel {
             default -> {
             }
         }
+        //msg de excepciones
+        if(msgProducto!=null){
+            etiquetaExcepciones.setText(msgProducto);
+            etiquetaExcepciones.setBounds(15,getHeight()/3,300,130);
+            etiquetaExcepciones.setOpaque(true);
+            etiquetaExcepciones.setBackground(Color.RED);
+            etiquetaExcepciones.setForeground(Color.WHITE);
+            etiquetaExcepciones.setVisible(true);
+            etiquetaExcepciones.setFont(new Font("Arial", Font.BOLD, 25));
+            etiquetaExcepciones.setMargin(new Insets(10, 20, 10, 20));
+
+            Timer temporizador = new Timer(2000,e1 -> {
+                etiquetaExcepciones.setVisible(false);
+                msgProducto = null;
+            });
+            temporizador.setRepeats(false);
+            temporizador.start();
+        }
     }
     public void setSeleccionM(SeleccionMonedas seleccionM){
         this.seleccionM = seleccionM;
     }
     public void eventoBtnSprite(Comprador comprador){
-        Moneda m = new Moneda1000();
         try{
-            comprador.comprarProducto(exp, SeleccionProductos.SPRITE);
-            depCompra.setSeleccion(SeleccionProductos.SPRITE);
-            numSprites-=1;
-            depSprite.setNumProductos(numSprites);
-            setSeleccionM(SeleccionMonedas.NULO);
-            comprador.setHayProducto(true);
+            if(comprador!=null){
+                comprador.comprarProducto(exp, SeleccionProductos.SPRITE);
+                depCompra.setSeleccion(SeleccionProductos.SPRITE);
+                numSprites-=1;
+                depSprite.setNumProductos(numSprites);
+                setSeleccionM(SeleccionMonedas.NULO);
+                comprador.setHayProducto(true);
+                comprador.setProductoConsumido(SeleccionProductos.SPRITE);
+            }
+            else{
+                msgProducto = "\nNo se ha ingresado\nuna moneda";
+            }
 
         }catch(PagoInsuficienteException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(PagoIncorrectoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(NoHayProductoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }
         repaint();
     }
     public void eventoBtnCoca(Comprador comprador){
-        Moneda m = new Moneda1000();
         try{
-            comprador.comprarProducto(exp, SeleccionProductos.COCACOLA);
-            depCompra.setSeleccion(SeleccionProductos.COCACOLA);
-            numCocas-=1;
-            depCoca.setNumProductos(numCocas);
-            setSeleccionM(SeleccionMonedas.NULO);
-            comprador.setHayProducto(true);
+            if(comprador!=null){
+                comprador.comprarProducto(exp, SeleccionProductos.COCACOLA);
+                depCompra.setSeleccion(SeleccionProductos.COCACOLA);
+                numCocas-=1;
+                depCoca.setNumProductos(numCocas);
+                setSeleccionM(SeleccionMonedas.NULO);
+                comprador.setHayProducto(true);
+                comprador.setProductoConsumido(SeleccionProductos.COCACOLA);
+            }
+            else{
+                msgProducto = "\nNo se ha ingresado\n una moneda";
+            }
 
         }catch(PagoInsuficienteException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(PagoIncorrectoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(NoHayProductoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }
         repaint();
     }
     public void eventoBtnFanta(Comprador comprador){
-        Moneda m = new Moneda1000();
         try{
-            comprador.comprarProducto(exp, SeleccionProductos.FANTA);
-            depCompra.setSeleccion(SeleccionProductos.FANTA);
-            numFantas-=1;
-            depFanta.setNumProductos(numFantas);
-            setSeleccionM(SeleccionMonedas.NULO);
-            comprador.setHayProducto(true);
+            if(comprador!=null){
+                comprador.comprarProducto(exp, SeleccionProductos.FANTA);
+                depCompra.setSeleccion(SeleccionProductos.FANTA);
+                numFantas-=1;
+                depFanta.setNumProductos(numFantas);
+                setSeleccionM(SeleccionMonedas.NULO);
+                comprador.setHayProducto(true);
+                comprador.setProductoConsumido(SeleccionProductos.FANTA);
+            }
+            else{
+                msgProducto = "\nNo se ha ingresado\n una moneda";
+            }
 
         }catch(PagoInsuficienteException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(PagoIncorrectoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(NoHayProductoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }
         repaint();
     }
     public void eventoBtnSnickers(Comprador comprador){
-        Moneda m = new Moneda1000();
         try{
-            comprador.comprarProducto(exp, SeleccionProductos.SNICKERS);
-            depCompra.setSeleccion(SeleccionProductos.SNICKERS);
-            numSnickers-=1;
-            depSnickers.setNumProductos(numSnickers);
-            setSeleccionM(SeleccionMonedas.NULO);
-            comprador.setHayProducto(true);
+            if(comprador!=null){
+                comprador.comprarProducto(exp, SeleccionProductos.SNICKERS);
+                depCompra.setSeleccion(SeleccionProductos.SNICKERS);
+                numSnickers-=1;
+                depSnickers.setNumProductos(numSnickers);
+                setSeleccionM(SeleccionMonedas.NULO);
+                comprador.setHayProducto(true);
+                comprador.setProductoConsumido(SeleccionProductos.SNICKERS);
+            }
+
+            else{
+                msgProducto = "\nNo se ha ingresado\n una moneda";
+            }
 
         }catch(PagoInsuficienteException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(PagoIncorrectoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(NoHayProductoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }
         repaint();
     }
     public void eventoBtnSuper8(Comprador comprador){
-        Moneda m = new Moneda1000();
         try{
-            comprador.comprarProducto(exp, SeleccionProductos.SUPER8);
-            depCompra.setSeleccion(SeleccionProductos.SUPER8);
-            numSuper8-=1;
-            depSuper8.setNumProductos(numSuper8);
-            setSeleccionM(SeleccionMonedas.NULO);
-            comprador.setHayProducto(true);
+            if(comprador!=null){
+                comprador.comprarProducto(exp, SeleccionProductos.SUPER8);
+                depCompra.setSeleccion(SeleccionProductos.SUPER8);
+                numSuper8-=1;
+                depSuper8.setNumProductos(numSuper8);
+                setSeleccionM(SeleccionMonedas.NULO);
+                comprador.setHayProducto(true);
+                comprador.setProductoConsumido(SeleccionProductos.SUPER8);
+            }
+            else{
+                msgProducto = "\nNo se ha ingresado\n una moneda";
+            }
 
         }catch(PagoInsuficienteException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(PagoIncorrectoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }catch(NoHayProductoException e){
-            System.out.println(e.getMessage());
+            msgProducto = e.getMessage();
+            exp.getVuelto();
         }
         repaint();
-    }
-    public void setActionBtnSprite(ActionListener actionListener){
-        btnSprite.addActionListener(actionListener);
-    }
-    public void setActionBtnCoca(ActionListener actionListener){
-        btnCoca.addActionListener(actionListener);
-    }
-    public void setActionBtnFanta(ActionListener actionListener){
-        btnFanta.addActionListener(actionListener);
-    }
-    public void setActionBtnSnickers(ActionListener actionListener){
-        btnSnickers.addActionListener(actionListener);
-    }
-    public void setActionBtnSuper8(ActionListener actionListener){
-        btnSuper8.addActionListener(actionListener);
     }
     public void clickDepCompra(Comprador comprador){
         comprador.consumirProducto(exp);

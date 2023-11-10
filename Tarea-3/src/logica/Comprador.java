@@ -13,7 +13,7 @@ public class Comprador {
     /**
      * indica si es que se consumio el producto
      */
-    private Boolean ProductoConsumido;
+    private SeleccionProductos ProductoConsumido;
     /**
      * variable que guarda la moneda del comprador
      */
@@ -33,7 +33,7 @@ public class Comprador {
      */
     public Comprador(Moneda moneda) {
         hayProducto = false;
-        ProductoConsumido = false;
+        ProductoConsumido = SeleccionProductos.NULO;
         vuelto = 0;
         msgProducto = null;
         this.moneda = moneda;
@@ -64,7 +64,6 @@ public class Comprador {
     public void consumirProducto(Expendedor exp){
         Producto producto = exp.getProducto();
         if(producto != null) {
-            ProductoConsumido = true;
             msgProducto = producto.consumir();
         }
     }
@@ -74,15 +73,17 @@ public class Comprador {
      * @return devuelve vuelto
      */
     public int getVuelto(){
-        return vuelto;
+        int vueltoTmp = vuelto;
+        vuelto = 0;
+        return vueltoTmp;
     }
     public String getMsgProducto(){
         return msgProducto;
     }
-    public Boolean getProductoConsumido(){
+    public SeleccionProductos getProductoConsumido(){
         return ProductoConsumido;
     }
-    public void setProductoConsumido(Boolean productoConsumido){
+    public void setProductoConsumido(SeleccionProductos productoConsumido){
         this.ProductoConsumido = productoConsumido;
     }
     public Boolean getHayProducto(){
