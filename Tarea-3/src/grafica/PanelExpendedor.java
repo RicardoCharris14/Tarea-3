@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Vicente Ramirez
  */
 public class PanelExpendedor extends JPanel {
+    private Moneda moneda;
     private String msgProducto;
     private Expendedor exp;
     private SeleccionMonedas seleccionM;
@@ -108,6 +109,9 @@ public class PanelExpendedor extends JPanel {
         this.setLayout(null);
         setBackground(Color.cyan);
     }
+    public void setMoneda(Moneda moneda){
+        this.moneda = moneda;
+    }
     /**
      * Método que añade al  boton Sprite un ActionListener
      * @param actionListener ActionListener que se traspasa desde panel principal
@@ -144,10 +148,10 @@ public class PanelExpendedor extends JPanel {
         btnSuper8.addActionListener(actionListener);
     }
     /**
-     * metodo que establece las medidas de los depositos, dibuja el expendedor con sus medidas, tambien dibuja
-     * las lineas que dividen al expendedor entre cada producto, establece el estante y la bandeja de salida de
-     * los productos, tambien dibuja el espacio donde se ingresarán las monedas, dibuja los iconos de los productos con
-     * sus respectivos precios y permite la interaccion entre los distintos tipos de monedas a la hora de comprar
+     * dibuja el expendedor, los depositos de los productos,las lineas que dividen los depositos de cada producto, la
+     * bandeja de salida de los productos, el espacio donde se ingresarán las monedas, el deposito donde se guardarán
+     * las monedas recaudadas, tambien dibuja la moneda con la que se va a realizar la compra, ademas crea los botones
+     * de los productos con sus respectivos precios y lanza los mensajes cuando ocurre una excepcion
      * @param g the <code>Graphics</code> object to protect
      */
     @Override
@@ -269,22 +273,27 @@ public class PanelExpendedor extends JPanel {
         Icon e = new ImageIcon(imSuper8.getImage().getScaledInstance(ladoBtn, ladoBtn, Image.SCALE_DEFAULT));
         btnSuper8.setIcon(e);
         //Monedas de compra
+        g.setColor(Color.CYAN);
         switch (seleccionM){
             case MONEDA100 -> {
                 imMoneda = new ImageIcon("src/grafica/imagenes/moneda100.png").getImage();
                 g.drawImage(imMoneda,420,400,76,76,this);
+                g.drawString("Serie: "+moneda.getSerie(),440,395);
             }
             case MONEDA500 -> {
                 imMoneda = new ImageIcon("src/grafica/imagenes/moneda500.png").getImage();
                 g.drawImage(imMoneda,420,400,76,76,this);
+                g.drawString("Serie: "+moneda.getSerie(),440,395);
             }
             case MONEDA1000 -> {
                 imMoneda = new ImageIcon("src/grafica/imagenes/moneda1000.png").getImage();
                 g.drawImage(imMoneda,420,400,76,76,this);
+                g.drawString("Serie:"+moneda.getSerie(),440,395);
             }
             case MONEDA5000 -> {
                 imMoneda = new ImageIcon("src/grafica/imagenes/moneda5000.png").getImage();
                 g.drawImage(imMoneda,420,400,76,76,this);
+                g.drawString("Serie:"+moneda.getSerie(),440,395);
             }
             default -> {
             }
@@ -316,9 +325,10 @@ public class PanelExpendedor extends JPanel {
         this.seleccionM = seleccionM;
     }
     /**
-     * Comprador compra un producto en el expendedor, le indica al deposito compra que se compro una Sprite, descuenta
-     * la cantidad de Sprites que hay en el deposito de Sprites e indica que la moneda ya fue usada, todo esto
-     * ocurre si es que no se lanza ninguna excepción, si hay alguna excepcion se guarda el mensaje en una variable y
+     * Comprador compra una sprite en el expendedor, el expendedor guarda la sprite en el deposito de compra, descuenta
+     * la cantidad de sprites que hay en el deposito de sprites y guarda en una variable la informacion de que se compro
+     * una sprite, e indica que la moneda ya fue usada, todo esto ocurre si es que no se lanza ninguna excepción, si hay
+     * alguna excepcion se guarda el mensaje en una variable y
      * el expendedor retorna el vuelto
      * @param comprador es una referencia a comprador
      */
@@ -350,10 +360,10 @@ public class PanelExpendedor extends JPanel {
         repaint();
     }
     /**
-     * Comprador compra un producto en el expendedor, le indica al deposito compra que se compro una Cocacola, descuenta
-     * la cantidad de Cocacolas que hay en el deposito de Cocacolas e indica que la moneda ya fue usada, todo esto
-     * ocurre si es que no se lanza ninguna excepción, si hay alguna excepcion se guarda el mensaje en una variable y
-     * el expendedor retorna el vuelto
+     * Comprador compra una coca cola en el expendedor, el expendedor guarda la coca cola en el deposito de compra,
+     * descuenta la cantidad de Super8 que hay en el deposito de coca colas y guarda en una variable la informacion de
+     * que se compro una coca cola, e indica que la moneda ya fue usada, todo esto ocurre si es que no se lanza ninguna
+     * excepción, si hay alguna excepcion se guarda el mensaje en una variable y el expendedor retorna el vuelto
      * @param comprador es una referencia a comprador
      */
     public void eventoBtnCoca(Comprador comprador){
@@ -384,9 +394,10 @@ public class PanelExpendedor extends JPanel {
         repaint();
     }
     /**
-     * Comprador compra un producto en el expendedor, le indica al deposito compra que se compro una Fanta, descuenta
-     * la cantidad de Fantas que hay en el deposito de Fantas e indica que la moneda ya fue usada, todo esto
-     * ocurre si es que no se lanza ninguna excepción, si hay alguna excepcion se guarda el mensaje en una variable y
+     * Comprador compra una fanta en el expendedor, el expendedor guarda la fanta en el deposito de compra, descuenta
+     * la cantidad de fantas que hay en el deposito de Super8 y guarda en una variable la informacion de que se compro
+     * una fanta, e indica que la moneda ya fue usada, todo esto ocurre si es que no se lanza ninguna excepción, si hay
+     * alguna excepcion se guarda el mensaje en una variable y
      * el expendedor retorna el vuelto
      * @param comprador es una referencia a comprador
      */
@@ -418,9 +429,10 @@ public class PanelExpendedor extends JPanel {
         repaint();
     }
     /**
-     * Comprador compra un producto en el expendedor, le indica al deposito compra que se compro un Snicker, descuenta
-     * la cantidad de Snickers que hay en el deposito de Snickers e indica que la moneda ya fue usada, todo esto
-     * ocurre si es que no se lanza ninguna excepción, si hay alguna excepcion se guarda el mensaje en una variable y
+     * Comprador compra un snickers en el expendedor, el expendedor guarda el snickers en el deposito de compra, descuenta
+     * la cantidad de Snickers que hay en el deposito de Snickers y guarda en una variable la informacion de que se compro
+     * un snickers, e indica que la moneda ya fue usada, todo esto ocurre si es que no se lanza ninguna excepción, si hay
+     * alguna excepcion se guarda el mensaje en una variable y
      * el expendedor retorna el vuelto
      * @param comprador es una referencia a comprador
      */
@@ -453,9 +465,10 @@ public class PanelExpendedor extends JPanel {
         repaint();
     }
     /**
-     * Comprador compra un producto en el expendedor, le indica al deposito compra que se compro un Super8, descuenta
-     * la cantidad de Super8 que hay en el deposito de Super8 e indica que la moneda ya fue usada, todo esto
-     * ocurre si es que no se lanza ninguna excepción, si hay alguna excepcion se guarda el mensaje en una variable y
+     * Comprador compra un super8 en el expendedor, el expendedor guarda el super8 en el deposito de compra, descuenta
+     * la cantidad de Super8 que hay en el deposito de Super8 y guarda en una variable la informacion de que se compro
+     * un super8, e indica que la moneda ya fue usada, todo esto ocurre si es que no se lanza ninguna excepción, si hay
+     * alguna excepcion se guarda el mensaje en una variable y
      * el expendedor retorna el vuelto
      * @param comprador es una referencia a comprador
      */
@@ -488,8 +501,10 @@ public class PanelExpendedor extends JPanel {
     }
 
     /**
-     *
-     * @param comprador
+     * el comprador retira el producto de la bandeja de salida del expendedor y guarda en una variable una constante con
+     * el producto que retiro, se le aviso al deposito compra que no hay ningun producto en su interior y cambia la
+     * constante seleccionProducto a NULO
+     * @param comprador es el comprador que realiza la compra
      */
     public void clickDepCompra(Comprador comprador){
         comprador.consumirProducto(exp);
@@ -498,6 +513,10 @@ public class PanelExpendedor extends JPanel {
         seleccionProducto = SeleccionProductos.NULO;
         repaint();
     }
+
+    /**
+     *
+     */
     public void clickMostradorExpendedor(){
         exp.rellenarDepositos(numProductos);
         depCoca.setNumProductos(numProductos);

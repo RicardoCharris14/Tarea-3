@@ -40,7 +40,7 @@ public class Comprador {
     }
 
     /**
-     * Compra un producto en expendedor, el producto es consumido y se calcula el vuelto del producto.
+     * Compra un producto en expendedor y se calcula el vuelto del producto.
      * @param exp expendedor en el que se realiza la compra
      * @param seleccion se usa para elegir el producto a comprar
      * @throws PagoInsuficienteException cuando el pago no satisface el precio total del producto lanza esta exception
@@ -59,7 +59,7 @@ public class Comprador {
     }
 
     /**
-     * consume el producto y guarda su mensaje en msgProducto
+     * retira el producto del expendedor, lo consume y guarda un mensaje sobre el producto
      */
     public void consumirProducto(Expendedor exp){
         Producto producto = exp.getProducto();
@@ -67,11 +67,9 @@ public class Comprador {
             msgProducto = producto.consumir();
         }
     }
-
-    /**
-     * getter de vuelto
-     * @return devuelve vuelto
-     */
+    public Moneda getMoneda(){
+        return moneda;
+    }
     public int getVuelto(){
         int vueltoTmp = vuelto;
         vuelto = 0;

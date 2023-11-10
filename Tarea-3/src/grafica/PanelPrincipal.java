@@ -127,8 +127,16 @@ public class PanelPrincipal extends JPanel {
         exp.setActionBtnSuper8(listener);
     }
 
+    /**
+     * Crea un MouseListener y lo añade al panel
+     */
     public void clickMoneda100(){
         MouseListener captador1 = new MouseListener() {
+            /**
+             * si se clickea la moneda100 llama a el metodo clickMoneda100 en el panelComprador, y a los metodos
+             * setSeleccionM, le pasa la constante MONEDA100, y setMoneda del panelExpendedor
+             * @param e el evento a procesar
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 int clickX = e.getX();
@@ -140,6 +148,7 @@ public class PanelPrincipal extends JPanel {
                 if (clickX >= panelX + 10 && clickX <= panelX + 10 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
                     com.clickMoneda100();
                     exp.setSeleccionM(SeleccionMonedas.MONEDA100);
+                    exp.setMoneda(com.getComprador().getMoneda());
                     repaint();
                 }
             }
@@ -155,8 +164,16 @@ public class PanelPrincipal extends JPanel {
         this.addMouseListener(captador1);
     }
 
+    /**
+     * Crea un MouseListener y lo añade al panel
+     */
     public void clickMoneda500(){
         MouseListener captador2 = new MouseListener() {
+            /**
+             * si se clickea la moneda500 llama a el metodo clickMoneda500 en el panelComprador, y a los metodos
+             * setSeleccionM, le pasa la constante MONEDA500, y setMoneda del panelExpendedor
+             * @param e el evento a procesar
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 int clickX = e.getX();
@@ -168,6 +185,7 @@ public class PanelPrincipal extends JPanel {
                 if (clickX >= panelX + 90 && clickX <= panelX + 90 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
                     com.clickMoneda500();
                     exp.setSeleccionM(SeleccionMonedas.MONEDA500);
+                    exp.setMoneda(com.getComprador().getMoneda());
                     repaint();
                 }
             }
@@ -183,8 +201,16 @@ public class PanelPrincipal extends JPanel {
         this.addMouseListener(captador2);
     }
 
+    /**
+     * Crea unn MouseListener y lo añade al panel
+     */
     public void clickMoneda1000(){
         MouseListener captador3 = new MouseListener() {
+            /**
+             * si se clickea la moneda1000 llama a el metodo clickMoneda1000 en el panelComprador, y a los metodos
+             * setSeleccionM, le pasa la constante MONEDA1000, y setMoneda del panelExpendedor
+             * @param e el evento a procesar
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 int clickX = e.getX();
@@ -196,6 +222,7 @@ public class PanelPrincipal extends JPanel {
                 if (clickX >= panelX + 170 && clickX <= panelX + 170 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
                     com.clickMoneda1000();
                     exp.setSeleccionM(SeleccionMonedas.MONEDA1000);
+                    exp.setMoneda(com.getComprador().getMoneda());
                     repaint();
                 }
             }
@@ -211,8 +238,16 @@ public class PanelPrincipal extends JPanel {
         this.addMouseListener(captador3);
     }
 
+    /**
+     * Crea un MouseListener y lo añade al panel
+     */
     public void clickMoneda5000(){
         MouseListener captador4 = new MouseListener() {
+            /**
+             * si se clickea la moneda5000 llama a el metodo clickMoneda5000 en el panelComprador, y a los metodos
+             * setSeleccionM, le pasa la constante MONEDA5000, y setMoneda del panelExpendedor
+             * @param e el evento a procesar
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 int clickX = e.getX();
@@ -224,6 +259,7 @@ public class PanelPrincipal extends JPanel {
                 if (clickX >= panelX + 270 && clickX <= panelX + 270 + panelAncho && clickY >= panelY && clickY <= panelY + panelAlto) {
                     com.clickMoneda5000();
                     exp.setSeleccionM(SeleccionMonedas.MONEDA5000);
+                    exp.setMoneda(com.getComprador().getMoneda());
                     repaint();
                 }
             }
@@ -239,8 +275,16 @@ public class PanelPrincipal extends JPanel {
         this.addMouseListener(captador4);
     }
 
+    /**
+     * Crea un MouseListener y lo añade al panel
+     */
     public void clickDpstCompra() {
         MouseListener captador5 = new MouseListener() {
+            /**
+             * si se clickea el depositoCompra llama al metodo  clickDepCompra en el panelExpendedor y le pasa como
+             * parametro al comprador
+             * @param e el evento a procesar
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 int panelX = exp.getX() + 71;
@@ -269,8 +313,16 @@ public class PanelPrincipal extends JPanel {
         };
         this.addMouseListener(captador5);
     }
+
+    /**
+     *Crea un MouseListener y lo agrega al panel
+     */
     public void clickMostradorExpendedor(){
         MouseListener captador6 = new MouseListener() {
+            /**
+             * si se clickea el mostrador del expendedor llama la metodo clickMostradorExpendedor del panelExpendedor
+             * @param e evento a ser procesado
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 int clickX = e.getX();

@@ -49,7 +49,8 @@ public class PanelComprador extends JPanel{
         return comprador;
     }
     /**
-     * Metodo que inserta la imagen del comprador y define las dimensiones de comprador y de monedas
+     * dibuja al comprador y a las monedas disponibles , escribe el mensaje que dice el comprador sobre el producto que
+     * consumio y sobre el vuelto que recibio
      * @param g the <code>Graphics</code> object to protect
      */
     @Override

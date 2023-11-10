@@ -123,7 +123,7 @@ public class Expendedor {
     }
 
     /**
-     * metodo que encapsula al vuelto
+     * metodo que retorna monedas de vuelto desde el deposito de monedas
      * @return devuelve vuelto en monedas de 100
      */
     public Moneda getVuelto() {
@@ -142,6 +142,11 @@ public class Expendedor {
     public Deposito<Moneda> getMonedasRecaudadas(){
         return monedasRecaudadas;
     }
+
+    /**
+     * rellena los depositos de los diferentes productos
+     * @param numProducto indica la cantidad de productos que se agregaran
+     */
     public void rellenarDepositos(int numProducto){
         for (int i = 0; i < numProducto; i++) {
             Cocacola bebida1  = new Cocacola(100 + i);
