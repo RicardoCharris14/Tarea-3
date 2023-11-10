@@ -1,10 +1,13 @@
 package grafica;
 import logica.*;
-import org.w3c.dom.html.HTMLSelectElement;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * Clase que simula el panel del comprador
+ * @author Ricardo Charris
+ * @author Vicente Ramirez
+ */
 public class PanelComprador extends JPanel{
     private SeleccionProductos productoComprado;
     private Comprador comprador;
@@ -18,6 +21,9 @@ public class PanelComprador extends JPanel{
     private Image imFanta;
     private Image imSnickers;
     private Image imSuper8;
+    /**
+     * Constructor que inicializa la imagen de comprador, crea las intancias de monedas y las aÃ±ade al panel
+     */
     public PanelComprador(){
         comprador = null;
         imCristianoMessi = new ImageIcon("src/grafica/imagenes/cr7ypessi.png").getImage();
@@ -35,9 +41,17 @@ public class PanelComprador extends JPanel{
         this.setLayout(null);
         this.setBackground(Color.white);
     }
+    /**
+     * Metodo Getter de comprador
+     * @return retorna comprador
+     */
     public Comprador getComprador(){
         return comprador;
     }
+    /**
+     * Metodo que inserta la imagen del comprador y define las dimensiones de comprador y de monedas
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -96,15 +110,27 @@ public class PanelComprador extends JPanel{
             }
         }
     }
+    /**
+     * Metodo que instancia a comprador con una moneda de 100
+     */
     public void clickMoneda100(){
         comprador = new Comprador(new Moneda100());
     }
+    /**
+     * Metodo que instancia a comprador con una moneda de 500
+     */
     public void clickMoneda500(){
         comprador = new Comprador(new Moneda500());
     }
+    /**
+     * Metodo que instancia a comprador con una moneda de 1000
+     */
     public void clickMoneda1000(){
         comprador = new Comprador(new Moneda1000());
     }
+    /**
+     * Metodo que instancia a comprador con una moneda de
+     */
     public void clickMoneda5000(){
         comprador = new Comprador(new Moneda5000());
     }

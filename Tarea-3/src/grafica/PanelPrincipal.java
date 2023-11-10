@@ -7,10 +7,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+/**
+ * Clase que simula el panel de expendedor
+ * @author Ricardo Charris
+ * @author Vicente Ramirez
+ */
 public class PanelPrincipal extends JPanel {
     private PanelComprador com;
     private PanelExpendedor exp;
+    /**
+     * Constructor que hace referencia  a PanelExpendedor y PanelComprador, los añade el panel principal con sus
+     * dimensiones respectivas. Llama a los metodos ActionListener que permiten hacer click en los lugares
+     * correspondientes
+     */
 
     public PanelPrincipal() {
         exp = new PanelExpendedor();
@@ -36,8 +45,15 @@ public class PanelPrincipal extends JPanel {
         this.setLayout(null);
         this.setBackground(Color.WHITE);
     }
+    /**
+     * Método que permite hacer click en el boton de Sprite
+     */
     public void actionBtnSprite(){
         ActionListener listener= new ActionListener(){
+            /**
+             * Llama al metodo eventoBtnSprite de panel expendedor
+             * @param e EL evento va a ser procesado
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 exp.eventoBtnSprite(com.getComprador());
@@ -45,9 +61,15 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnSprite(listener);
     }
-
+    /**
+     * Método que permite hacer click en el boton de Cocacola
+     */
     public void actionBtnCoca(){
         ActionListener listener= new ActionListener(){
+            /**
+             * Llama al metodo eventoBtnCoca de panel expendedor
+             * @param e EL evento va a ser procesado
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 exp.eventoBtnCoca(com.getComprador());
@@ -55,9 +77,15 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnCoca(listener);
     }
-
+    /**
+     * Método que permite hacer click en el boton de Fanta
+     */
     public void actionBtnFanta(){
         ActionListener listener= new ActionListener(){
+            /**
+             * Llama al metodo eventoBtnFanta de panel expendedor
+             * @param e EL evento va a ser procesado
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 exp.eventoBtnFanta(com.getComprador());
@@ -65,9 +93,15 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnFanta(listener);
     }
-
+    /**
+     * Método que permite hacer click en el boton de Snicker
+     */
     public void actionBtnSnickers(){
         ActionListener listener= new ActionListener(){
+            /**
+             * Llama al metodo eventoBtnSnickers de panel expendedor
+             * @param e EL evento va a ser procesado
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 exp.eventoBtnSnickers(com.getComprador());
@@ -75,9 +109,15 @@ public class PanelPrincipal extends JPanel {
         };
         exp.setActionBtnSnickers(listener);
     }
-
+    /**
+     * Método que permite hacer click en el boton de Super8
+     */
     public void actionBtnSuper8(){
         ActionListener listener= new ActionListener(){
+            /**
+             * Llama al metodo eventoBtnSuper8 de panel expendedor
+             * @param e EL evento va a ser procesado
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 exp.eventoBtnSuper8(com.getComprador());
@@ -227,11 +267,5 @@ public class PanelPrincipal extends JPanel {
             public void mouseExited(MouseEvent e) {}
         };
         this.addMouseListener(captador5);
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-
     }
 }
