@@ -4,6 +4,8 @@ import logica.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 /**
  * Clase que simula el panel de expendedor
  * @author Ricardo Charris
@@ -13,6 +15,7 @@ public class PanelExpendedor extends JPanel {
     private String msgProducto;
     private Expendedor exp;
     private SeleccionMonedas seleccionM;
+    private SeleccionProductos seleccionProducto;
     private PanelDepositoSprite depSprite;
     private PanelDepositoCoca depCoca;
     private PanelDepositoFanta depFanta;
@@ -25,6 +28,7 @@ public class PanelExpendedor extends JPanel {
     private ImageIcon imSnickers;
     private ImageIcon imSuper8;
     private Image imMoneda;
+    private Image imMonedaDep;
     private JButton btnSprite;
     private JButton btnCoca;
     private JButton btnFanta;
@@ -181,6 +185,9 @@ public class PanelExpendedor extends JPanel {
         //manija de la bandeja de salida
         g.fillRect(132, 610, 66, 7);
         //entrada de moneda
+        g.setColor(Color.WHITE);
+        g.fillRect(357,335,106,41);
+        g.setColor(Color.BLACK);
         g2.drawRect(357, 335, 106, 41);
         txtEntradaM.setBounds(360, 338, 100, 35);
         txtEntradaM.setEditable(false);
@@ -192,7 +199,34 @@ public class PanelExpendedor extends JPanel {
         g.fillRect(395, 393, 30, 90);
         g.setColor(Color.WHITE);
         g.fillRect(405, 400, 10, 76);
-
+        //Deposito monedas
+        g.setColor(Color.BLACK);
+        g.fillRect(330,500,158,180);
+        g.setColor(Color.WHITE);
+        g.fillRect(335,505,148,170);
+        int posXMonDep = 340;
+        int posYMonDep = 510;
+        int i =0;
+        for(Moneda m : exp.getMonedasRecaudadas().getElementos()){
+            if(i==9){
+                i=0;
+                posYMonDep+=14;
+            }
+            if(m instanceof Moneda100){
+                imMonedaDep = new ImageIcon("src/grafica/imagenes/moneda100.png").getImage();
+                g.drawImage(imMonedaDep,posXMonDep+i*14,posYMonDep,28,28,this);
+            } else if (m instanceof Moneda500) {
+                imMonedaDep = new ImageIcon("src/grafica/imagenes/moneda500.png").getImage();
+                g.drawImage(imMonedaDep,posXMonDep+i*14,posYMonDep,28,28,this);
+            } else if (m instanceof Moneda1000) {
+                imMonedaDep = new ImageIcon("src/grafica/imagenes/moneda1000.png").getImage();
+                g.drawImage(imMonedaDep,posXMonDep+i*14,posYMonDep,28,28,this);
+            } else if (m instanceof Moneda5000) {
+                imMonedaDep = new ImageIcon("src/grafica/imagenes/moneda5000.png").getImage();
+                g.drawImage(imMonedaDep,posXMonDep+i*14,posYMonDep,28,28,this);
+            }
+            i+=1;
+        }
         //precios monedas
         txtPrecioSprite.setBounds(347,15,ladoBtn,20);
         txtPrecioSprite.setForeground(Color.BLACK);
@@ -297,7 +331,7 @@ public class PanelExpendedor extends JPanel {
                 depSprite.setNumProductos(numSprites);
                 setSeleccionM(SeleccionMonedas.NULO);
                 comprador.setHayProducto(true);
-                comprador.setProductoConsumido(SeleccionProductos.SPRITE);
+                seleccionProducto = SeleccionProductos.SPRITE;
             }
             else{
                 msgProducto = "\nNo se ha ingresado\nuna moneda";
@@ -331,7 +365,7 @@ public class PanelExpendedor extends JPanel {
                 depCoca.setNumProductos(numCocas);
                 setSeleccionM(SeleccionMonedas.NULO);
                 comprador.setHayProducto(true);
-                comprador.setProductoConsumido(SeleccionProductos.COCACOLA);
+                seleccionProducto = SeleccionProductos.COCACOLA;
             }
             else{
                 msgProducto = "\nNo se ha ingresado\n una moneda";
@@ -365,7 +399,7 @@ public class PanelExpendedor extends JPanel {
                 depFanta.setNumProductos(numFantas);
                 setSeleccionM(SeleccionMonedas.NULO);
                 comprador.setHayProducto(true);
-                comprador.setProductoConsumido(SeleccionProductos.FANTA);
+                seleccionProducto = SeleccionProductos.FANTA;
             }
             else{
                 msgProducto = "\nNo se ha ingresado\n una moneda";
@@ -399,7 +433,7 @@ public class PanelExpendedor extends JPanel {
                 depSnickers.setNumProductos(numSnickers);
                 setSeleccionM(SeleccionMonedas.NULO);
                 comprador.setHayProducto(true);
-                comprador.setProductoConsumido(SeleccionProductos.SNICKERS);
+                seleccionProducto = SeleccionProductos.SNICKERS;
             }
 
             else{
@@ -434,7 +468,7 @@ public class PanelExpendedor extends JPanel {
                 depSuper8.setNumProductos(numSuper8);
                 setSeleccionM(SeleccionMonedas.NULO);
                 comprador.setHayProducto(true);
-                comprador.setProductoConsumido(SeleccionProductos.SUPER8);
+                seleccionProducto = SeleccionProductos.SUPER8;
             }
             else{
                 msgProducto = "\nNo se ha ingresado\n una moneda";
@@ -460,6 +494,17 @@ public class PanelExpendedor extends JPanel {
     public void clickDepCompra(Comprador comprador){
         comprador.consumirProducto(exp);
         depCompra.setSeleccion(SeleccionProductos.NULO);
+        comprador.setProductoConsumido(seleccionProducto);
+        seleccionProducto = SeleccionProductos.NULO;
+        repaint();
+    }
+    public void clickMostradorExpendedor(){
+        exp.rellenarDepositos(numProductos);
+        depCoca.setNumProductos(numProductos);
+        depSprite.setNumProductos(numProductos);
+        depFanta.setNumProductos(numProductos);
+        depSnickers.setNumProductos(numProductos);
+        depSuper8.setNumProductos(numProductos);
         repaint();
     }
 }

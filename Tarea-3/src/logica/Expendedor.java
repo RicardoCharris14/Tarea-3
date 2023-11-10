@@ -49,22 +49,7 @@ public class Expendedor {
         monedasRecaudadas = new Deposito<>();
         productoComprado = null;
 
-        for (int i = 0; i < numProducto; i++) {
-            Cocacola bebida1  = new Cocacola(100 + i);
-            depositoCoca.addElemento(bebida1);
-            Sprite bebida2 = new Sprite(200 + i);
-            depositSprite.addElemento(bebida2);
-            Fanta bebida3 = new Fanta(300  + i);
-            depositoFanta.addElemento(bebida3);
-            Snickers dulce1 = new Snickers(400 + i);
-            depositoSnickers.addElemento(dulce1);
-            Super8 dulce2 = new Super8(500 + i);
-            depositoSuper8.addElemento(dulce2);
-        }
-        System.out.println("EXPENDEDOR CREADO\n\nPrecios de los productos:\n-CocaCola: $"+ SeleccionProductos.COCACOLA.getPrecio()+
-                "\n-logica.Sprite: $"+ SeleccionProductos.SPRITE.getPrecio()+"\n-logica.Fanta: $"+ SeleccionProductos.FANTA.getPrecio()+
-                "\n-logica.Snickers: $"+ SeleccionProductos.SNICKERS.getPrecio()+"\n-logica.Super8: $"+ SeleccionProductos.SUPER8.getPrecio()+
-                "\n\nHay "+numProducto+" unidades de cada producto.");
+        rellenarDepositos(numProducto);
     }
 
     /**
@@ -153,6 +138,23 @@ public class Expendedor {
         Producto productoTmp = productoComprado;
         productoComprado = null;
         return productoTmp;
+    }
+    public Deposito<Moneda> getMonedasRecaudadas(){
+        return monedasRecaudadas;
+    }
+    public void rellenarDepositos(int numProducto){
+        for (int i = 0; i < numProducto; i++) {
+            Cocacola bebida1  = new Cocacola(100 + i);
+            depositoCoca.addElemento(bebida1);
+            Sprite bebida2 = new Sprite(200 + i);
+            depositSprite.addElemento(bebida2);
+            Fanta bebida3 = new Fanta(300  + i);
+            depositoFanta.addElemento(bebida3);
+            Snickers dulce1 = new Snickers(400 + i);
+            depositoSnickers.addElemento(dulce1);
+            Super8 dulce2 = new Super8(500 + i);
+            depositoSuper8.addElemento(dulce2);
+        }
     }
 
     /**

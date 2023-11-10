@@ -41,6 +41,7 @@ public class PanelPrincipal extends JPanel {
         actionBtnFanta();
         actionBtnSnickers();
         actionBtnSuper8();
+        clickMostradorExpendedor();
 
         this.setLayout(null);
         this.setBackground(Color.WHITE);
@@ -267,5 +268,29 @@ public class PanelPrincipal extends JPanel {
             public void mouseExited(MouseEvent e) {}
         };
         this.addMouseListener(captador5);
+    }
+    public void clickMostradorExpendedor(){
+        MouseListener captador6 = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int clickX = e.getX();
+                int clickY = e.getY();
+                int panelX = exp.getX();
+                int panelY = exp.getY();
+                if(clickX>=panelX+15 && clickX<=panelX+315 && clickY>=panelX+15 && clickY<=panelY+573){
+                    exp.clickMostradorExpendedor();
+                    repaint();
+                }
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        };
+        this.addMouseListener(captador6);
     }
 }

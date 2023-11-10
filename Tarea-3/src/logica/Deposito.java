@@ -35,6 +35,9 @@ public class Deposito<T> {
             return elementos.remove(0);
         }
     }
+    public ArrayList<T> getElementos(){
+        return elementos;
+    }
 
     /**
      * Describe la clase DepositoProducto
